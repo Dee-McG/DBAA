@@ -31,7 +31,7 @@
     <p>{{post.body|safe}}</p>
     {% for reply in replies %}
     <span class="sm-txt">{{ reply.user }} replied on {{reply.time}}</span>
-    {% if post.user == request.user %}
+    {% if reply.user == request.user %}
     <span>
         <a href="{% url 'delete_reply' reply.pk %}" class="delete" aria-label="Click to delete reply">
             <i class="fa-solid fa-x"></i>
