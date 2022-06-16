@@ -1,0 +1,19 @@
+.sm-txt > a, .sm-txt {
+    font-size: 10px;
+}
+
+.post-img {
+    width: 100%;
+}
+
+@media only screen and (min-width: 800px) {
+    .post-img {
+        width: 60%;
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+    .post-img {
+        width: 35%;
+    }
+}

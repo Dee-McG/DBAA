@@ -28,7 +28,7 @@
         <ul class="main-nav-links">
             <li><a href="#" class="nav-link" id="nav-link-home">Home</a></li>
             <li><a href="#" class="nav-link" id="nav-link-events">Events</a></li>
-            <li><a href="#" class="nav-link" id="nav-link-discussions">Discussions</a></li>
+            <li><a href="{% url 'posts' %}" class="nav-link" id="nav-link-discussions">Discussions</a></li>
             <li><a href="#" class="nav-link" id="nav-link-register">Register</a></li>
             <li><a href="#" class="nav-link" id="nav-link-log-in">Log In</a></li>
             <li><a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook nav-social-icons facebook-icon"></i></a></li>
@@ -40,6 +40,14 @@
     {% block content %}
     {% endblock %}
     </main>
+
+    <footer class="main-footer">
+        <div class="footer-socials-div">
+            <a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook footer-social-icons footer-facebook-icon"></i></a>
+            <a href="https://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram footer-social-icons footer-instagram-icon"></i></a>
+            <a href="https://www.twitter.com" target="_blank"><i class="fa-brands fa-twitter footer-social-icons footer-twitter-icon"></i></a>
+        </div>
+    </footer>
     
 </body>
 
