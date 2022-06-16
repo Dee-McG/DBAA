@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="m-3">
+    <form method="POST" action="{% url 'create_post' %}" class="form mb-2" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {{ form.media }}
+        <button type="submit">Post</button>
+    </form>
+</div>
+
+{% endblock %}

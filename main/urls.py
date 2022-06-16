@@ -22,4 +22,6 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
+    path('posts/', include('posts.urls')),
+    path('djrichtextfield/', include('djrichtextfield.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
