@@ -83,6 +83,24 @@ class CreateReplyView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
+class EditReplyView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    """
+    A view to provide a Form to the user
+    to edit a reply
+    """
+    form_class = ReplyForm
+    template_name = 'posts/edit_reply.html'
+    model = Reply
+
+    def form_valid(self, form):
+        # if form is valid return to post
+        self.success_url = '/posts/view/' + str(self.object.rid) + '/'
+        return super().form_valid(form)
+
+    def test_func(self):
+        return self.request.user == self.get_object().user
+
+
 class DeleteReplyView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     """ A view to delete an reply """
     model = Reply

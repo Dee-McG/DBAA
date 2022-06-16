@@ -18,7 +18,7 @@ class Post(models.Model):
     time = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.title
+        return str(self.did)
 
 
 class Reply(models.Model):
@@ -27,6 +27,7 @@ class Reply(models.Model):
     """
     user = models.ForeignKey(User, related_name='reply_user', on_delete=models.CASCADE)
     rid = models.ForeignKey(Post, related_name="post_reply", on_delete=models.CASCADE)
+    reply_id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, max_length=36)
     body = RichTextField(max_length=10000, null=False, blank=False)
     time = models.DateTimeField(auto_now=True)
 

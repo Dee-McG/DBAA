@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'posts/css/posts.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="m-3">
+    <form method="POST" class="form mb-2" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {{ form.media }}
+        <button type="submit" class="btn btn-outline-success">Submit</button>
+    </form>
+</div>
+
+{% endblock %}
