@@ -9,11 +9,12 @@
 {% block content %}
 
 <div class="m-3">
-    <form method="POST" action="{% url 'create_post' %}" class="form mb-2" enctype="multipart/form-data">
+    {{ post.title }}
+    <form method="POST" action="" class="form mb-2" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
         {{ form.media }}
-        <button type="submit" class="btn btn-outline-success">Post</button>
+        <button type="submit" class="btn btn-outline-success">Submit</button>
     </form>
 </div>
 

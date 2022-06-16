@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'posts/css/posts.css' %}">
+{% endblock %}
+
+{% block content %}
+<a href="{% url 'posts' %}" class="btn btn-outline-secondary m-2">Back</a>
+
+{% for post in posts %}
+
+<div class="container">
+    {% if request.user == post.user %}
+    <div class="d-block mb-2">
+        <a href="{% url 'edit_post' post.did %}">Edit</a>
+
+        <a href="{% url 'delete_post' post.did %}">Delete</a>
+    </div>
+    {% endif %}
+
+    <h1>{{post.title}}</h1>
+    <span class="sm-txt">Posted By: {{post.user}} on
+        {{post.time}}</span>
+    {% if post.image.url is not none %}
+    <div class="d-block w-100">
+        <img class="post-img" src="{{post.image.url}}">
+    </div>
+    {% endif %}
+    <p>{{post.body|safe}}</p>
+    {% for reply in replies %}
+    <span class="sm-txt">{{ reply.user }} replied on {{reply.time}}</span>
+    <p>{{ reply.body|safe }}</p>
+    {% endfor %}
+    
+    <a class="btn btn-outline-success" href="{% url 'create_reply' post.did %}">Reply</a>
+
+{% endfor %}
+</div>
+{% endblock %}
