@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'posts',
     # other
     'crispy_forms',
+    'crispy_bootstrap5',
     'djrichtextfield',
     'ckeditor',
     # cloudinary set up
@@ -70,7 +71,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'main.urls'
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 SITE_ID = 1
 
