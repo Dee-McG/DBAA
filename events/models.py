@@ -9,7 +9,7 @@ class Event(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=160, null=False, blank=False)
     body = RichTextField(max_length=10000, null=False, blank=False)
-    image = models.ImageField(upload_to="event_images", blank=True)
+    image = models.ImageField(upload_to="event_images/", blank=True)
     e_time = models.DateTimeField(blank=False)
     date = models.DateTimeField(auto_now=True)
 
