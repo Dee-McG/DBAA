@@ -12,6 +12,11 @@ class PostsView(LoginRequiredMixin, ListView):
     success_url = "/posts/" 
     context_object_name = 'posts'
 
+    def get_queryset(self):
+        """ Return queryset by newest first """
+        order_newest = Post.objects.order_by('-time')
+        return order_newest
+
 
 class CreatePostView(LoginRequiredMixin, CreateView):
     """
