@@ -42,12 +42,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    #Apps
+    # allauth
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    # apps
     'home',
     'posts',
     'events',
-    #other
+    # other
     'crispy_forms',
+    'crispy_bootstrap5',
     'djrichtextfield',
     'ckeditor',
     # cloudinary set up
@@ -67,7 +72,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'main.urls'
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 SITE_ID = 1
 
@@ -87,7 +93,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
             ],
-        'builtins': [
+            'builtins': [
                 'crispy_forms.templatetags.crispy_forms_tags',
                 'crispy_forms.templatetags.crispy_forms_field',
             ]
@@ -99,25 +105,41 @@ MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 WSGI_APPLICATION = 'main.wsgi.application'
 
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+# Allauth settings
+ACCOUNT_AUTHENTICATION_METHOD = "username_email"
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = "none"
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = False
+ACCOUNT_USERNAME_MIN_LENGTH = 4
+LOGIN_URL = "/accounts/login/"
+LOGIN_REDIRECT_URL = "/"
+
 DJRICHTEXTFIELD_CONFIG = {
     'js': ['//cdn.ckeditor.com/4.14.0/standard/ckeditor.js'],
     'init_template': 'djrichtextfield/init/ckeditor.js',
     'css': {
         'all': [
-        '//cdn.ckeditor.com/4.17.1/standard/ckeditor.js'
+            '//cdn.ckeditor.com/4.17.1/standard/ckeditor.js'
         ]
     },
     'settings': {  # CKEditor
-    'toolbar': [
-        {'items': ['Format', '-', 'Bold', 'Italic', '-',
-                   'RemoveFormat']},
-        {'items': ['Link', 'Unlink', 'Image', 'Table']},
-        {'items': ['Source']}
-    ],
-    'format_tags': 'p;h1;h2;h3'
+        'toolbar': [
+            {'items': ['Format', '-', 'Bold', 'Italic', '-', 'RemoveFormat']},
+            {'items': ['Link', 'Unlink', 'Image', 'Table']},
+            {'items': ['Source']}
+        ],
+        'format_tags': 'p;h1;h2;h3'
     }
 }
-
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
@@ -173,8 +195,8 @@ STATIC_URL = 'static/'
 
 if 'DEVELOPMENT' in os.environ:
     STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
-else :
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')  
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
