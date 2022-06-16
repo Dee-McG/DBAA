@@ -24,5 +24,6 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('', include('home.urls')),
     path('posts/', include('posts.urls')),
+    path('events/', include('events.urls')),
     path('djrichtextfield/', include('djrichtextfield.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

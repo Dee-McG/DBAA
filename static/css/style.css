@@ -1,3 +1,141 @@
-html {
-    background-color: aqua;
+/* Font */
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&family=Roboto:wght@100;300;400;500&display=swap');
+
+html, body {
+    height: 100%;
+  }
+
+body {
+    display: flex;
+    flex-direction: column;
+  }
+
+main {
+    flex: 1 0 auto;
+  }
+
+footer {
+    flex-shrink: 0;
+  }
+
+/* Main Navigation */
+
+.main-nav {
+    height: 70px;
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    font-family: 'Quicksand', sans-serif;
+    background-color: white;
+}
+
+.ikonic-logo {
+    width: 60px;
+    margin-left: 15px;
+}
+
+.nav-title {
+    margin-left: 20px;
+}
+
+.nav-div-left {
+    display: flex;
+    align-items: center;
+}
+
+.main-nav-links {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 900px;
+    list-style: none;
+    height: 70px;
+}
+
+.main-nav-links > li > a {
+    color: rgb(59, 59, 59);
+    transition: color 0.5s; 
+}
+
+.nav-link {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+}
+
+.nav-social-icons {
+    font-size: 1.4rem;
+    transition: color 0.5s;
+}
+
+.facebook-icon {
+    color: #1877f2;
+}
+
+.facebook-icon:hover {
+    color: #3b5998;
+}
+
+.instagram-icon {
+    color: #c32aa3;
+}
+
+.instagram-icon:hover {
+    color: #7232bd;
+}
+
+.twitter-icon {
+    color: #1da1f2;
+}
+
+.twitter-icon:hover {
+    color: #0276be;
+}
+
+#nav-link-home:hover {
+    color: #FF0018;
+}
+
+#nav-link-events:hover {
+    color: #FFA52C;
+}
+
+#nav-link-discussions:hover {
+    color: #008018;
+}
+
+#nav-link-register:hover {
+    color: #0000F9;
+}
+
+#nav-link-log-in:hover {
+    color: #86007D;
+}
+
+/* Footer */
+
+.footer-socials-div {
+    background: linear-gradient(110deg, rgba(255, 0, 24), rgba(255, 165, 44), rgba(255, 255, 65), rgba(0, 128, 24), rgba(0, 0, 249), rgba(134, 0, 125));
+    height: 130px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.footer-social-icons {
+    font-size: 1.8rem;
+    color: white;
+    transition: color 0.5s;
+}
+.footer-facebook-icon:hover {
+    color: #1877f2;
+}
+
+.footer-instagram-icon:hover {
+    color: #c32aa3;
+}
+
+.footer-twitter-icon:hover {
+    color: #FFA52C;
 }
