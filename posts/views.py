@@ -28,7 +28,7 @@ class CreatePostView(CreateView):
 
 
 class DeletePostView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
-    """ A view to delete an event """
+    """ A view to delete a post """
     model = Post
     success_url = "/posts/"
 
@@ -55,7 +55,7 @@ class ViewPostView(LoginRequiredMixin, DetailView):
 class EditPostView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     """
     A view to provide a Form to the user
-    to edit a Discussion
+    to edit a post
     """
     form_class = PostForm
     template_name = 'posts/edit_post.html'
@@ -76,8 +76,17 @@ class CreateReplyView(LoginRequiredMixin, CreateView):
     template_name = 'posts/create_reply.html'
 
     def form_valid(self, form):
-        # if form is valid return to discussion
+        # if form is valid return to post
         self.success_url = '/posts/view/' + str(Post.objects.get(pk=self.kwargs['pk']).did) + '/'
         form.instance.rid = Post.objects.get(pk=self.kwargs['pk'])
         form.instance.user = self.request.user
         return super().form_valid(form)
+
+
+class DeleteReplyView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    """ A view to delete an reply """
+    model = Reply
+    success_url = "/posts/"
+
+    def test_func(self):
+        return self.request.user == self.get_object().user

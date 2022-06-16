@@ -13,6 +13,11 @@ form {
     border: 0.5px solid #cdcdcd;
 }
 
+.delete {
+    font-size: 10px;
+    color: red;
+}
+
 @media only screen and (min-width: 800px) {
     .post-img {
         width: 60%;
