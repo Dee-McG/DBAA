@@ -6,8 +6,18 @@
     width: 100%;
 }
 
+form {
+    width: 100%;
+    border-radius: 5px;
+    background-color: #f3e775;
+    border: 0.5px solid #cdcdcd;
+}
+
 @media only screen and (min-width: 800px) {
     .post-img {
+        width: 60%;
+    }
+    form {
         width: 60%;
     }
 }
@@ -15,5 +25,9 @@
 @media only screen and (min-width: 1000px) {
     .post-img {
         width: 35%;
+    }
+
+    form {
+        width: 50%;
     }
 }
