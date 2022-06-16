@@ -2,6 +2,23 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&family=Roboto:wght@100;300;400;500&display=swap');
 
+html, body {
+    height: 100%;
+  }
+
+body {
+    display: flex;
+    flex-direction: column;
+  }
+
+main {
+    flex: 1 0 auto;
+  }
+
+footer {
+    flex-shrink: 0;
+  }
+
 /* Main Navigation */
 
 .main-nav {
