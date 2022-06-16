@@ -1,6 +1,17 @@
+from django.views.generic import CreateView, ListView
 from .models import Event
-from django.views.generic import CreateView
 from .forms import EventForm
+
+
+class EventList(ListView):
+    """
+    Create a list of events view
+    """
+    model = Event
+    queryset = Event.objects.all().order_by("-e_time")
+    template_name = "events_list.html"
+    paginate_by = 6
+
 
 
 class CreateEventView(CreateView):
