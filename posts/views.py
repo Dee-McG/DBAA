@@ -13,7 +13,7 @@ class PostsView(LoginRequiredMixin, ListView):
     context_object_name = 'posts'
 
 
-class CreatePostView(CreateView):
+class CreatePostView(LoginRequiredMixin, CreateView):
     """
     A view to create a Post
     """
