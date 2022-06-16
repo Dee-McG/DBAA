@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post
+from .models import Post, Reply
 
 
 class PostAdmin(admin.ModelAdmin):
@@ -13,4 +13,16 @@ class PostAdmin(admin.ModelAdmin):
         'body',
     )
 
+
+class ReplyAdmin(admin.ModelAdmin):
+    """
+    Class to view Replies on the admin panel
+    """
+    list_display = (
+        'rid',
+        'user',
+        'body',
+    )
+
 admin.site.register(Post, PostAdmin)
+admin.site.register(Reply, ReplyAdmin)
