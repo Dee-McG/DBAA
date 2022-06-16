@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     #Apps
     'home',
     'posts',
+    'events',
     #other
     'crispy_forms',
     'djrichtextfield',
