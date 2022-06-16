@@ -8,7 +8,7 @@
 
 {% block content %}
 
-<div class="m-3">
+<div class="d-flex justify-content-center">
     <form method="POST" class="form mb-2" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}

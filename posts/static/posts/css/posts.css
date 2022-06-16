@@ -11,6 +11,8 @@ form {
     border-radius: 5px;
     background-color: #f3e775;
     border: 0.5px solid #cdcdcd;
+    padding: .5rem;
+    margin: .5rem;
 }
 
 .delete {
@@ -24,6 +26,8 @@ form {
     }
     form {
         width: 60%;
+        padding: 1rem;
+        margin: 1.5rem;
     }
 }
 
