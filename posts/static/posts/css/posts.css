@@ -15,14 +15,13 @@
     width: 100%;
 }
 
-form {
-    width: 100%;
+/* form {
     border-radius: 5px;
     background-color: #f3e775;
     border: 0.5px solid #cdcdcd;
     padding: .5rem;
     margin: .5rem;
-}
+} */
 
 .delete {
     font-size: 10px;
@@ -124,11 +123,6 @@ form {
     .post-img {
         width: 60%;
     }
-    form {
-        width: 60%;
-        padding: 1rem;
-        margin: 1.5rem;
-    }
 
     .thumb-img {
         display: flex;
@@ -140,9 +134,5 @@ form {
 @media only screen and (min-width: 1000px) {
     .post-img {
         width: 35%;
-    }
-
-    form {
-        width: 50%;
     }
 }
