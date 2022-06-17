@@ -23,3 +23,10 @@ class Event(models.Model):
     def number_of_going(self):
         return self.going.count()
 
+
+class EventNumbers(models.Model):
+    """
+    Event model
+    """
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE)
