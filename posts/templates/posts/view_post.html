@@ -7,37 +7,57 @@
 {% endblock %}
 
 {% block content %}
-<a href="{% url 'posts' %}" class="btn btn-outline-secondary m-2">Back</a>
 
 {% for post in posts %}
 
-<div class="container mb-3">
-    {% if request.user == post.user %}
-    <div class="d-block mb-2">
-        <a href="{% url 'edit_post' post.did %}">Edit</a>
+<div class="container mt-2">
+    <a href="{% url 'posts' %}" class="back-link"><i class="fa-solid fa-angle-left arrow"></i>Back</a>
+</div>
 
-        <a href="{% url 'delete_post' post.did %}">Delete</a>
-    </div>
-    {% endif %}
+<div class="container view-post mb-3">
+    <!-- Post -->
+    <div class="post-con">
+        <h1 class="fs-4 text-center">{{post.title}}</h1>
 
-    <h1>{{post.title}}</h1>
-    <span class="sm-txt">Posted By: {{post.user}} on
-        {{post.time}}</span>
-    {% if post.image.url is not none %}
-    <div class="d-block w-100">
-        <img class="post-img" src="{{post.image.url}}">
+        {% if request.user == post.user %}
+        <!-- Delete post -->
+        <div class="text-center">
+            <span>
+                <a href="{% url 'delete_post' post.did %}" class="delete large-icon" aria-label="Click to delete reply">
+                    <i class="fa-solid fa-x"></i>
+                </a>
+            </span>
+            <!-- Edit post -->
+            <span class="m-2 text-center">
+                <a href="{% url 'edit_post' post.did %}" class="delete large-icon" aria-label="Click to edit reply">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </a>
+            </span>
+        </div>
+        {% endif %}
+        <span class="sm-txt d-block text-center">Posted By: <strong>{{post.user}}</strong> on
+            {{post.time}}</span>
+        {% if post.image.url is not none %}
+        <div class="d-block w-100 text-center">
+            <img class="post-img" src="{{post.image.url}}">
+        </div>
+        {% endif %}
+
+        <p>{{post.body|safe}}</p>   
     </div>
-    {% endif %}
-    <p>{{post.body|safe}}</p>
+    <hr>
+
+    <!-- Replies -->
     {% for reply in replies %}
-    <span class="sm-txt">{{ reply.user }} replied on {{reply.time}}</span>
-    {% if post.user == request.user %}
+    <span class="sm-txt"><strong>{{ reply.user }}</strong> replied on {{reply.time}}</span>
+    {% if reply.user == request.user or request.user == is_superuser %}
     <span>
+        <!-- Delete reply -->
         <a href="{% url 'delete_reply' reply.pk %}" class="delete" aria-label="Click to delete reply">
             <i class="fa-solid fa-x"></i>
         </a>
     </span>
-
+    <!-- Edit post -->
     <span class="m-2">
         <a href="{% url 'edit_reply' reply.pk %}" class="delete" aria-label="Click to edit reply">
             <i class="fa-solid fa-pen-to-square"></i>
@@ -45,10 +65,10 @@
     </span>
 
     {% endif %}
-    <p>{{ reply.body|safe }}</p>
+    <p class="p-0 m-0">{{ reply.body|safe }}</p>
     {% endfor %}
     
-    <a class="btn btn-outline-success" href="{% url 'create_reply' post.did %}">Reply</a>
+    <a class="btn btn-dark" href="{% url 'create_reply' post.did %}">Reply</a>
 
 {% endfor %}
 </div>
