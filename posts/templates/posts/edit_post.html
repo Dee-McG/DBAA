@@ -7,17 +7,34 @@
 {% endblock %}
 
 {% block content %}
+<div class="container mt-2">
+    <a href="{% url 'posts' %}" class="back-link"><i class="fa-solid fa-angle-left arrow"></i>Back</a>
+</div>
 
-<div class="d-flex justify-content-center">
-    <form method="POST" action="{% url 'edit_post' post.did %}" class="form mb-2 p-3 mt-5" enctype="multipart/form-data">
+<div class="container view-post mb-3">
+    <!-- FORM -->
+    <form method="POST" action="{% url 'edit_post' post.did %}" class="form post-con mb-2" enctype="multipart/form-data">
         <h1 class="d-block text-center title">Edit A Discussion</h1>
         {% csrf_token %}
         {{ form|crispy }}
         {{ form.media }}
         <div class="d-flex justify-content-center">
-            <button type="submit" class="btn btn-outline-success">Post</button>
+            <button type="submit" class="btn btn-dark">Post</button>
         </div>
     </form>
+    <!-- POST -->
+    <div class="post-con">
+        <h1 class="fs-4 text-center">{{post.title}}</h1>
+        <span class="sm-txt d-block text-center">Posted By: <strong>{{post.user}}</strong> on
+            {{post.time}}</span>
+        {% if post.image.url is not none %}
+        <div class="d-block w-100 text-center">
+            <img class="post-img" src="{{post.image.url}}">
+        </div>
+        {% endif %}
+
+        <p>{{post.body|safe}}</p>   
+    </div>
 </div>
 
 {% endblock %}

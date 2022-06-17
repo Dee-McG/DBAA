@@ -8,8 +8,9 @@
 
 {% block content %}
 
-<div class="d-flex justify-content-center">
-    <form method="POST" action="" class="form" enctype="multipart/form-data">
+<div class="container view-post mb-3">
+    <form method="POST" action="" class="post-con mb-2" enctype="multipart/form-data">
+        <h1 class="d-block text-center title">Reply to Discussion</h1>
         {% csrf_token %}
         {{ form|crispy }}
         {{ form.media }}
