@@ -2,4 +2,64 @@
 {% load static %}
 {% block content %}
 
+<section class="main-header">
+    <div class="main-titles">
+        <h1>Ikonic Events</h1>
+        <h2 class="title-cta">The Best LGBTQ+ Live Events</h2>
+    </div>
+</section>
+
+<section class="welcome">
+    <div class="welcome-text">
+        <h2>Welcome to Ikonic Events</h2>
+        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+            The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+    </div>
+    <div class="welcome-image">
+        <img src="{% static '/images/welcome-image.jpg' %}" alt="Photo of a diverse group of people smiling at the camera with pride face paint and costumes.">
+    </div>
+</section>
+
+<div class="section-divider"></div>
+
+<section class="featured-event">
+    <div class="featured-event-image">
+        <img src="{% static '/images/ministry-of-pride.jpeg' %}" alt="Offical poster for ministry of pride with acts list and neon colours." class="ministry-of-pride-image">
+    </div>
+    <div class="featured-event-info">
+        <h2 class="event-title">Featured Event</h2>
+        <h3>Ministry of Pride Day</h3>
+        <div class="featured-event-details">
+            <div class="featured-event-details-row-1">
+                <p class="featured-event-date"><i class="fa-solid fa-calendar-day"></i> Saturday 2nd July 2022</p>
+                <p class="featured-event-time"><i class="fa-solid fa-clock" id="featured-fa-time"></i> 2pm - 10pm</p>
+            </div>
+            <div class="featured-event-details-row-2">
+                <p class="featured-event-location"><i class="fa-solid fa-location-dot" id="featured-fa-location"></i> Ministry of Sound, 103 Gaunt St, London</p>
+                <p class="featured-event-price"><i class="fa-solid fa-money-bill" id="featured-fa-money"></i> £15 - £50</p>
+            </div>
+        </div>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+    </div>
+</section>
+
+<div class="section-divider"></div>
+  
+<section class="upcoming-events">
+    <div class="upcoming-events-title">
+        <h2>Upcoming Events</h2>
+    </div>
+    <div class="upcoming-events-listings">
+        <div class="upcoming-events-row-1">
+
+        </div>
+        <div class="upcoming-events-row-2">
+
+        </div>
+    </div>
+    <div class="upcoming-events-button">
+        <a href="#"><button>View All</button></a>
+    </div>
+</section>
+
 {% endblock %}
