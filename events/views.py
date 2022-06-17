@@ -8,9 +8,14 @@ class EventList(ListView):
     Create a list of events view
     """
     model = Event
-    queryset = Event.objects.all().order_by("-e_time")
-    template_name = "events_list.html"
+    template_name = "events/events.html"
+    context_object_name = "events"
     paginate_by = 6
+    
+    def get_queryset(self): 
+        events = Event.objects.order_by("-e_time")
+        print(events)
+        return events
 
 
 

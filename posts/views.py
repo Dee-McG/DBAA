@@ -9,7 +9,7 @@ class PostsView(LoginRequiredMixin, ListView):
     """ A view to return a list of posts """
     template_name = "posts/posts.html"
     model = Post
-    success_url = "/posts/" 
+    success_url = "/posts/"
     context_object_name = 'posts'
 
     def get_queryset(self):
