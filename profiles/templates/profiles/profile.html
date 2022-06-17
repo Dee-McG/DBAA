@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+{{ block.super }}
+    <link rel="stylesheet" href="{% static 'profiles/css/profiles.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="profile-page-bg">
+    <h1>Profile page</h1>
+    <p>user: {{profile}}<p>
+</div>
+{% endblock %}
