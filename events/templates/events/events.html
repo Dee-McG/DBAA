@@ -10,12 +10,12 @@
 
 <div class="post-container d-flex flex-column">
     <div class="text-center mt-3">
-        <h1>Discussion Boards</h1>
+        <h1>Events</h1>
     </div>
 
     <div class="posts">
         <div class="d-flex justify-content-end">
-            <a href="{% url 'create_event' %}">Create event</a>
+            <a href="{% url 'create_event' %}">Create an event</a>
         </div>
 
         {% for event in events %}
@@ -31,11 +31,10 @@
             </div>
             <div class="flex-column card-text">
                 <div>
-                    <a href="#" class="title-anchor">{{event.title}}</a>
+                    <a href="{% url 'view_event' event.id %}" class="title-anchor">{{event.title}}</a>
                 </div>
                 <div class="d-block">
                     <span class="sub-title">Created by {{event.user}} on {{event.date}}</span>
-                    <span class="sub-title">Event date {{event.e_time}}</span>
                 </div>
             </div>
         </div>

@@ -12,8 +12,7 @@ class Event(models.Model):
     image = models.ImageField(upload_to="event_images/", blank=True)
     e_time = models.DateTimeField(blank=False)
     date = models.DateTimeField(auto_now=True)
-    going = models.ManyToManyField(User, related_name="going", blank=True)
-    not_going = models.ManyToManyField(User, related_name="not_going", blank=True)
+    going = models.ManyToManyField(User, related_name="going_event", blank=True)
 
     class Meta:
         ordering = ["-date"]
@@ -24,5 +23,3 @@ class Event(models.Model):
     def number_of_going(self):
         return self.going.count()
 
-    def number_of_not_going(self):
-        return self.not_going.count()
