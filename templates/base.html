@@ -33,6 +33,7 @@
             <li><a href="{% url 'account_signup' %}" class="nav-link" id="nav-link-register">Register</a></li>
             <li><a href="{% url 'account_login' %}" class="nav-link" id="nav-link-log-in">Log In</a></li>
             {% else %}
+            <li><a href="{% url 'profile' request.user.id %}" class="nav-link" id="nav-link-register">Profile</a></li>
             <li><a href="{% url 'account_logout' %}" class="nav-link" id="nav-link-log-in">Log Out</a></li>
             {% endif %}
             <li><a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook nav-social-icons facebook-icon"></i></a></li>
@@ -60,6 +61,7 @@
             <li><a href="{% url 'account_signup' %}" class="mobile-nav-link" id="mobile-nav-link-register">Register</a></li>
             <li><a href="{% url 'account_login' %}" class="mobile-nav-link" id="mobile-nav-link-log-in">Log In</a></li>
             {% else %}
+            <li><a href="{% url 'profile' request.user.id %}" class="mobile-nav-link" id="mobile-nav-link-register">Profile</a></li>
             <li><a href="{% url 'account_logout' %}" class="mobile-nav-link" id="mobile-nav-link-log-in">Log Out</a></li>
             {% endif %}
         </ul>

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+{{ block.super }}
+    <link rel="stylesheet" href="{% static 'profiles/css/profiles.css' %}">
+{% endblock %}
+
+{% block content %}
+{% if request.user.id == user_id %}
+    <div class="profile-page-bg">
+        <h1>Profile page</h1>
+        <p>owner of page: {{ profile_name }}<p>
+        <p>current user: {{ request.user.username }}<p>
+    </div>
+{% else %}
+<div class="profile-page-bg">
+    <h1>Profile page</h1>
+    <p>owner of page: {{ profile_name }}<p>
+    <p>current user: {{ request.user.username }}</p>
+</div>
+{% endif %}
+{% endblock %}
