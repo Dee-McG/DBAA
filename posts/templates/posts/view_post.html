@@ -35,8 +35,10 @@
             </span>
         </div>
         {% endif %}
-        <span class="sm-txt d-block text-center">Posted By: <strong>{{post.user}}</strong> on
-            {{post.time}}</span>
+        <span class="sm-txt d-block text-center">Posted By: <a href="{% url 'profile' post.user.id %}" class="user">
+            <strong>{{ post.user }}</strong>
+            </a> on {{post.time}}
+        </span>
         {% if post.image.url is not none %}
         <div class="d-block w-100 text-center">
             <img class="post-img" src="{{post.image.url}}">
@@ -49,7 +51,10 @@
 
     <!-- Replies -->
     {% for reply in replies %}
-    <span class="sm-txt"><strong>{{ reply.user }}</strong> replied on {{reply.time}}</span>
+    <span class="sm-txt">
+        <a href="{% url 'profile' reply.user.id %}" class="user">
+            <strong>{{ reply.user }}</strong>
+        </a> replied on {{reply.time}}</span>
     {% if reply.user == request.user or request.user == is_superuser %}
     <span>
         <!-- Delete reply -->
