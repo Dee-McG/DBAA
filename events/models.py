@@ -22,4 +22,3 @@ class Event(models.Model):
 
     def number_of_going(self):
         return self.going.count()
-

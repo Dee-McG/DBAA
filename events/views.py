@@ -1,7 +1,7 @@
 from audioop import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
-from django.views.generic import CreateView, ListView, DetailView, UpdateView
+from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Event
 from .forms import EventForm
@@ -48,16 +48,40 @@ class EventDetailView(DetailView):
     """
     model = Event
     template_name = "events/view_event.html"
+    context_object_name = 'event'
+
+    defpost(self, request, *args, )
 
     def get_context_data(self, **kwargs):
-        data = super().get_context_data(**kwargs)
+        data = self.get_object()
 
-        going_connected = get_object_or_404(Event, id=self.kwargs["pk"])
-        going = False
-        if going_connected.going.filter(id=self.request.user.id).exists():
-            going = True
-        data["number_of_going"] = going_connected.number_of_going()
-        data["going_event"] = going
-        return data
+        context = {
+        "events": data
+        }
+        return context
+
+class EditEventView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    """
+    A view to editing an event form for the event owner
+    """
+    form_class = EventForm
+    template_name = "events/edit_event.html"
+    model = Event
+
+    def form_valid(self, form):
+        self.success_url = "/"
+        return super().form_valid(form)
+
+    def test_func(self):
+        return self.request.user == self.get_object().user
 
 
+class DeleteEventView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    """
+    A view to delete a post
+    """
+    model = Event
+    success_url = "events/events"
+
+    def test_func(self):
+        return self.request.user == self.get_object().user
