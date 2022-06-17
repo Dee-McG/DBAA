@@ -65,6 +65,7 @@ class EditPostView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     form_class = PostForm
     template_name = 'posts/edit_post.html'
     model = Post
+    context_object_name = 'post'
 
     def form_valid(self, form):
         # if form is valid return to discussion
