@@ -29,5 +29,3 @@ class ReplyForm (forms.ModelForm):
             'body': 'Reply',
         }
         reply = forms.CharField(widget=RichTextWidget())
-
-
