@@ -1,6 +1,6 @@
 /* Font */
 
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&family=Roboto:wght@100;300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&family=Roboto:wght@100;300;400;500&display=swap');
 
 html, body {
     height: 100%;
@@ -37,6 +37,7 @@ footer {
 
 .nav-title {
     margin-left: 20px;
+    margin-bottom: 0;
 }
 
 .nav-div-left {
@@ -113,6 +114,10 @@ footer {
     color: #86007D;
 }
 
+#mobile-nav {
+    display: none;
+}
+
 /* Footer */
 
 .footer-socials-div {
@@ -138,4 +143,143 @@ footer {
 
 .footer-twitter-icon:hover {
     color: #FFA52C;
+}
+
+/* Responsiveness */
+
+@media screen and (max-width: 1200px) {
+
+    .main-nav-links {
+        width: 700px;
+    }
+
+}
+
+@media screen and (max-width: 1020px) {
+
+    .nav-title {
+        font-size: 1.6rem;
+    }
+
+    .main-nav-links {
+        width: 650px;
+    }
+
+}
+
+@media screen and (max-width: 965px) {
+
+    .nav-link {
+        padding: 0;
+    }
+
+}
+
+@media screen and (max-width: 930px) {
+
+    .nav-link {
+        font-size: 1rem;
+    }
+
+    .main-nav-links {
+        width: 600px;
+    }
+
+    .nav-title {
+        font-size: 1.4rem;
+    }
+    
+    .nav-social-icons {
+        font-size: 1.2rem;
+    }
+}
+
+@media screen and (max-width: 860px) {
+
+    .main-nav-links > li > a > .fa-brands {
+        display: none;
+    }
+
+    .main-nav-links {
+        width: 530px;
+    }
+
+}
+
+@media screen and (max-width: 800px) {
+
+    .main-nav {
+        display: none;
+    }
+
+    #mobile-nav {
+        height: 70px;
+        display: flex;
+        position: sticky;
+        top: 0;
+        width: 100%;
+        font-family: 'Quicksand', sans-serif;
+        background-color: white;
+    }
+
+    .mobile-nav-links {
+        position: fixed;
+        margin-top: 70px;
+        background: linear-gradient(120deg, rgb(255, 165, 44) 60%, rgb(255, 255, 65) 60%);
+        width: 100%;
+        height: 170px;
+        overflow: hidden;
+        list-style: none;
+        display: none;
+    }
+
+    .mobile-nav-link {
+        text-decoration: none;
+        color:white;
+        font-weight: 700;
+    }
+
+    #mobile-menu {
+        display: none;
+    }
+
+    #mobile-menu:checked ~ #mobile-nav-links {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+
+    .mobile-nav-div {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .mobile-nav-div-left {
+        display: flex;
+        align-items: center;
+    }
+
+    .fa-bars {
+        font-size: 1.3rem;
+        padding-right: 15px;
+    }
+
+    .menu-icon-2 {
+        display: none;
+    }
+
+    .nav-title {
+        margin-bottom: 0;
+    }
+
+}
+
+@media screen and (max-width: 300px) {
+
+    .nav-title {
+        font-size: 1.2rem;
+    }
+
 }
