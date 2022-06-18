@@ -16,7 +16,14 @@
     </div>
     <div class="card-body w-100">
         <div class="d-grid gap-2">
-            <a href="{% url 'profile' request.user.id %}" class="btn btn-outline-primary" role="button">Following</a>
+            <form method="POST">
+                {% csrf_token %}
+                {% if following %}
+                    <button type="submit" class="btn btn-outline-primary">Following</button>
+                {% else %}
+                    <button type="submit" class="btn btn-outline-primary">Follow</button>
+                {% endif %}
+            </form>
             <a href="{% url 'view_details' request.user.id %}" class="btn btn-outline-primary" role="button">Personal details</a>
             <a href="{% url 'edit_details' request.user.id %}" class="btn btn-outline-primary" role="button">Edit Details</a>
         </div>
