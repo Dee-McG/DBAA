@@ -42,9 +42,9 @@ class EventDetailView(FormMixin, DetailView):
     template_name = "events/view_event.html"
     context_object_name = 'event'
 
-    def post(self, request, *args, **kwargs):
-        event = Event.objects.all()[:1].get()
-        user = EventNumbers.objects.filter(user=self.request.user)
+    def post(self, request, pk):
+        event = Event.objects.filter(id=pk)[:1].get()
+        user = EventNumbers.objects.filter(user=self.request.user, event=event)
     
         if user:
             user.delete()
