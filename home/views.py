@@ -12,6 +12,7 @@ class IndexView(ListView):
     def get_context_data(self, **kwargs):
 
         events = EventNumbers.objects.values('user').order_by().annotate(event=Count('event'))[:1]
+        featured = Event.objects.filter()
         for event in events:
             featured = Event.objects.filter(id=event['event'])
         next_events = Event.objects.all()[:6]
