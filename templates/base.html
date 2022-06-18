@@ -27,7 +27,7 @@
         </div>
         <ul class="main-nav-links">
             <li><a href="#" class="nav-link" id="nav-link-home">Home</a></li>
-            <li><a href="#" class="nav-link" id="nav-link-events">Events</a></li>
+            <li><a href="{% url 'events' %}" class="nav-link" id="nav-link-events">Events</a></li>
             <li><a href="{% url 'posts' %}" class="nav-link" id="nav-link-discussions">Discussions</a></li>
             {% if not user.is_authenticated %}
             <li><a href="{% url 'account_signup' %}" class="nav-link" id="nav-link-register">Register</a></li>
@@ -55,7 +55,7 @@
         <input class="mobile-menu" type="checkbox" id="mobile-menu"/>
         <ul id="mobile-nav-links" class="mobile-nav-links">
             <li><a href="#" class="mobile-nav-link" id="mobile-nav-link-home">Home</a></li>
-            <li><a href="#" class="mobile-nav-link" id="mobile-nav-link-events">Events</a></li>
+            <li><a href="{% url 'events' %}" class="mobile-nav-link" id="mobile-nav-link-events">Events</a></li>
             <li><a href="{% url 'posts' %}" class="mobile-nav-link" id="mobile-nav-link-discussions">Discussions</a></li>
             {% if not user.is_authenticated %}
             <li><a href="{% url 'account_signup' %}" class="mobile-nav-link" id="mobile-nav-link-register">Register</a></li>

@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'events/css/events.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container mt-2">
+    <a href="{% url 'events' %}" class="back-link"><i class="fa-solid fa-angle-left arrow"></i>Back</a>
+</div>
+
+<div class="container view-post mb-3">
+    <!-- Event -->
+    <div class="post-con">
+        <h1 class="fs-4 text-center">{{event.title}}</h1>
+
+        
+        {% if request.user == event.user %}
+        <div class="text-center">
+            <span>
+                <a href="{% url 'delete_event' event.id %}" class="delete large-icon" aria-label="Click to delete event">
+                    <i class="fa-solid fa-x"></i>
+                </a>
+            </span>
+            <span class="m-2 text-center">
+                <a href="{% url 'edit_event' event.id %}" class="delete large-icon" aria-label="Click to edit event">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </a>
+            </span>
+        </div>
+        {% endif %}
+
+        <span class="sm-txt d-block text-center">Created By: <strong>{{event.user}}</strong> on
+            {{event.date}}</span>
+        {% if event.image.url is not none %}
+        <div class="d-block w-100 text-center">
+            <img class="post-img" src="{{event.image.url}}">
+        </div>
+        {% endif %}
+
+        <p>{{event.body|safe}}</p>   
+    </div>
+    <hr>
+    {% if user.is_authenticated %}
+    <form method="POST">
+        {% csrf_token %}
+        {% if going_event %}
+        <button type="submit" name="q" value="{{event.pk}}" class="btn btn-info"><i class="fa-solid fa-thumbs-down"></i></button>
+        {% else %}
+        <strong></strong>
+        <button type="submit" name="q" value="{{event.id}}" class="btn btn-info"><i class="fa-regular fa-thumbs-up"></i></button>
+        {% endif %}
+    </form>
+    <strong class="text-secondary">{{ number }} Going{{ number|pluralize }}</strong>
+    {% else %}
+    <a class="btn btn-outline-info" href="{% url 'account_login' %}">Log in to use the going to the event button!</a><br>
+    {% endif %}
+
+</div>
+{% endblock %}
