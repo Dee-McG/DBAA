@@ -47,7 +47,7 @@
     <form method="POST">
         {% csrf_token %}
         {% if going_event %}
-        <button type="submit" name="q" value="{{event.pk}}" class="btn btn-info"><i class="fa-solid fa-thumbs-up"></i></button>
+        <button type="submit" name="q" value="{{event.pk}}" class="btn btn-info"><i class="fa-solid fa-thumbs-down"></i></button>
         {% else %}
         <strong></strong>
         <button type="submit" name="q" value="{{event.id}}" class="btn btn-info"><i class="fa-regular fa-thumbs-up"></i></button>

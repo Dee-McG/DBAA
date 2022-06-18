@@ -59,8 +59,12 @@ class EventDetailView(FormMixin, DetailView):
     def get_context_data(self, **kwargs):
         data = self.get_object()
 
+        going_event = EventNumbers.objects.filter(user=self.request.user, event=data)
+
         context = {
-        "events": data
+            "event": data,
+            "number": EventNumbers.objects.filter(event=self.kwargs['pk']).count,
+            "going_event": going_event
         }
         return context
 
@@ -85,7 +89,7 @@ class DeleteEventView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     A view to delete a post
     """
     model = Event
-    success_url = "events/events"
+    success_url = "/events/events"
 
     def test_func(self):
         return self.request.user == self.get_object().user
