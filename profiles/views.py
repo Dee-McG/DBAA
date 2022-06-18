@@ -1,3 +1,4 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.models import User
 from django.views.generic import DetailView, UpdateView
@@ -6,28 +7,48 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import UserProfile
 from .forms import UserAvatarForm, UserDetailForm
 
+from follow.models import Follow
 
-class UserProfileView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
+
+class UserProfileView(LoginRequiredMixin, DetailView):
     """View to show user profile"""
 
     template_name = 'profiles/profile.html'
     model = UserProfile
 
+    def post(self, request, pk):
+        """Function to toggle follow on and off"""
+        follower = get_object_or_404(User, id=pk)
+        user = get_object_or_404(User, id=self.request.user.id)
+        already_following = Follow.objects.filter(user=user, following=follower)
+        
+        if already_following:
+            already_following.delete()
+        else:
+            Follow.objects.create(
+                    user=user,
+                    following=follower
+                )
+
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
     def get(self, request, pk):
         user = get_object_or_404(self.model, user=pk)
+        follower = get_object_or_404(User, id=pk)
+        user_profile = get_object_or_404(User, id=self.request.user.id)
+        following = Follow.objects.filter(user=user_profile, following=follower)
 
         context = {
             'user_id': pk,
             'user': user,
+            'following': following,
         }
 
         return render(request, self.template_name, context)
 
-    def test_func(self):
-        return self.request.user == self.get_object().user
 
 
-class UserDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
+class UserDetailView(LoginRequiredMixin, DetailView):
     """View to show user profile"""
 
     template_name = 'profiles/personal_details.html'
@@ -42,9 +63,6 @@ class UserDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
         }
 
         return render(request, self.template_name, context)
-
-    def test_func(self):
-        return self.request.user == self.get_object().user
 
 
 class EditAvatarView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
