@@ -35,8 +35,15 @@
                     <div>
                         <a href="{% url 'view_event' event.id %}" class="title-anchor">{{event.title}}</a>
                     </div>
-                    <div class="d-block">
+                    <div>
                         <p>{{event.body|safe}}</p>
+                        <hr>
+                        <div>
+                            <span><strong>Location: {{event.location}}</strong></span>
+                            <span><strong>Cost: {{event.fee}} $</strong></span>
+                        </div>
+                    </div>
+                    <div>
                         <span class="sub-title">Created by {{event.user}} on {{event.date}}</span>
                     </div>
                 </div>

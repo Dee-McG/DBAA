@@ -112,6 +112,10 @@ form {
     border-radius: 2px;
 }
 
+strong {
+    margin: 12px;
+}
+
 @media only screen and (min-width: 500px) {
     .thumb-img > img{
         display: flex;
