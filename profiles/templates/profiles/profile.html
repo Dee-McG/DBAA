@@ -9,7 +9,11 @@
 {% block content %}
 <div class="container">
     <div class="text-center my-3">
+        {% if user_profile_str == user_str %}
         <h1>My Profile</h1>
+        {% else %}
+        <h1>{{ user }}</h1>
+        {% endif %}
     </div>
     <div class="row">
         <div class="col-4 border border-1">
