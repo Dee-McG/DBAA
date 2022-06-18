@@ -2,14 +2,14 @@ from django.views.generic import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from posts.models import Post
-from .models import Friend
+from .models import Follow
 
 
-class FriendsView(LoginRequiredMixin, ListView):
+class FollowView(LoginRequiredMixin, ListView):
     """ A view to return a list of friends activity """
-    template_name = "friends/friends.html"
-    model = Friend
-    success_url = "/friends/"
+    template_name = "follow/follow_list.html"
+    model = Follow
+    success_url = "/follow/"
 
     def get_context_data(self, **kwargs):
         """ Get all recent friends posts """

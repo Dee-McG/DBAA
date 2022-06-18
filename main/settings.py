@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'posts',
     'events',
     'profiles',
-    'friends',
+    'follow',
     # other
     'crispy_forms',
     'crispy_bootstrap5',

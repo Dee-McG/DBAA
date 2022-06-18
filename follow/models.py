@@ -2,9 +2,9 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-class Friend(models.Model):
+class Follow(models.Model):
     """
-    Reply model
+    Model to allow users to follow others
     """
     user = models.ForeignKey(User, related_name='this_user', on_delete=models.CASCADE)
     following = models.ForeignKey(User, related_name='friends', on_delete=models.CASCADE)
