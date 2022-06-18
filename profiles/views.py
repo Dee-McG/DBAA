@@ -33,15 +33,16 @@ class UserProfileView(LoginRequiredMixin, DetailView):
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
     def get(self, request, pk):
-        user = get_object_or_404(self.model, user=pk)
+        user = get_object_or_404(User, id=self.request.user.id)
         follower = get_object_or_404(User, id=pk)
-        user_profile = get_object_or_404(User, id=self.request.user.id)
-        following = Follow.objects.filter(user=user_profile, following=follower)
+        user_profile = get_object_or_404(self.model, user=pk)
+        following = Follow.objects.filter(user=user, following=follower)
 
         context = {
             'user_id': pk,
             'user': user,
             'following': following,
+            'user_profile': user_profile
         }
 
         return render(request, self.template_name, context)

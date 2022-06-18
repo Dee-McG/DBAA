@@ -20,7 +20,7 @@ class EventList(ListView):
         return events
 
 
-class CreateEventView(CreateView):
+class CreateEventView(LoginRequiredMixin, CreateView):
     """
     Create an event view
     """
@@ -34,7 +34,7 @@ class CreateEventView(CreateView):
         return super(CreateEventView, self).form_valid(form)
 
 
-class EventDetailView(FormMixin, DetailView):
+class EventDetailView(LoginRequiredMixin, FormMixin, DetailView):
     """
     Event details view
     """
