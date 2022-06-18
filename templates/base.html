@@ -26,7 +26,7 @@
             <h2 class="nav-title">IKONIC EVENTS</h2>
         </div>
         <ul class="main-nav-links">
-            <li><a href="#" class="nav-link" id="nav-link-home">Home</a></li>
+            <li><a href="{% url 'home' %}" class="nav-link" id="nav-link-home">Home</a></li>
             <li><a href="{% url 'events' %}" class="nav-link" id="nav-link-events">Events</a></li>
             <li><a href="{% url 'posts' %}" class="nav-link" id="nav-link-discussions">Discussions</a></li>
             {% if not user.is_authenticated %}
@@ -36,9 +36,9 @@
             <li><a href="{% url 'profile' request.user.id %}" class="nav-link" id="nav-link-register">Profile</a></li>
             <li><a href="{% url 'account_logout' %}" class="nav-link" id="nav-link-log-in">Log Out</a></li>
             {% endif %}
-            <li><a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook nav-social-icons facebook-icon"></i></a></li>
-            <li><a href="https://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram nav-social-icons instagram-icon"></i></a></li>
-            <li><a href="https://www.twitter.com" target="_blank"><i class="fa-brands fa-twitter nav-social-icons twitter-icon"></i></a></li>
+            <li class="main-nav-social-list"><a href="https://www.facebook.com" target="_blank"><i class="fa-brands fa-facebook nav-social-icons facebook-icon"></i></a></li>
+            <li class="main-nav-social-list"><a href="https://www.instagram.com" target="_blank"><i class="fa-brands fa-instagram nav-social-icons instagram-icon"></i></a></li>
+            <li class="main-nav-social-list"><a href="https://www.twitter.com" target="_blank"><i class="fa-brands fa-twitter nav-social-icons twitter-icon"></i></a></li>
         </ul>
     </nav>
     
@@ -54,7 +54,7 @@
         </div>
         <input class="mobile-menu" type="checkbox" id="mobile-menu"/>
         <ul id="mobile-nav-links" class="mobile-nav-links">
-            <li><a href="#" class="mobile-nav-link" id="mobile-nav-link-home">Home</a></li>
+            <li><a href="{% url 'home' %}" class="mobile-nav-link" id="mobile-nav-link-home">Home</a></li>
             <li><a href="{% url 'events' %}" class="mobile-nav-link" id="mobile-nav-link-events">Events</a></li>
             <li><a href="{% url 'posts' %}" class="mobile-nav-link" id="mobile-nav-link-discussions">Discussions</a></li>
             {% if not user.is_authenticated %}
