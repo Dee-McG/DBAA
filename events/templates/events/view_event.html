@@ -16,7 +16,6 @@
     <div class="post-con">
         <h1 class="fs-4 text-center">{{event.title}}</h1>
 
-        
         {% if request.user == event.user %}
         <div class="text-center">
             <span>
@@ -34,13 +33,15 @@
 
         <span class="sm-txt d-block text-center">Created By: <strong>{{event.user}}</strong> on
             {{event.date}}</span>
+            <span class="text-center d-block"><strong>Location: {{event.location}}</strong></span>
         {% if event.image.url is not none %}
         <div class="d-block w-100 text-center">
             <img class="post-img" src="{{event.image.url}}">
+            <p>{{event.body|safe}}</p>
         </div>
         {% endif %}
+            <span class="text-center d-block"><strong>Cost: {{event.fee}} $</strong></span>
 
-        <p>{{event.body|safe}}</p>   
     </div>
     <hr>
     {% if user.is_authenticated %}
@@ -57,6 +58,6 @@
     {% else %}
     <a class="btn btn-outline-info" href="{% url 'account_login' %}">Log in to use the going to the event button!</a><br>
     {% endif %}
-
+</div>
 </div>
 {% endblock %}

@@ -10,13 +10,15 @@ class EventForm(forms.ModelForm):
     """
     class Meta:
         model = Event
-        fields = ["title", "body", "e_time", "image"]
+        fields = ["title", "body", "e_time", "image", "location", "fee"]
 
         labels = {
             "title": "Title",
             "body": "Body",
             "e_time": "Event date",
-            "image": "Image"
+            "image": "Image",
+            "location": "Event Location",
+            "Fee": "Admission Fee"
         }
 
         body = forms.CharField(widget=RichTextWidget())

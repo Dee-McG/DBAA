@@ -13,6 +13,8 @@ class Event(models.Model):
     e_time = models.DateTimeField(blank=False)
     date = models.DateTimeField(auto_now=True)
     going = models.ManyToManyField(User, related_name="going_event", blank=True)
+    location = models.CharField(max_length=160, blank=False, default="Not Provided")
+    fee = models.DecimalField(default=0, help_text="$", decimal_places=2, max_digits=5)
 
     class Meta:
         ordering = ["-date"]
