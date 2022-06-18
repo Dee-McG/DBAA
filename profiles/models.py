@@ -9,7 +9,7 @@ class UserProfile(models.Model):
     User profile model
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    avatar = models.ImageField(upload_to="user_avatars/", blank=True)
 
     def __str__(self):
         return self.user.username
-

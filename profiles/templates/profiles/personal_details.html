@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+{{ block.super }}
+    <link rel="stylesheet" href="{% static 'profiles/css/profiles.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="text-center my-3">
+        <h1>My Profile</h1>
+    </div>
+    <div class="row">
+        <div class="col-4 border border-1">
+            {% include 'profiles/includes/profile_card.html'%}
+        </div>
+        <div class="col-8 border border-1">
+            <div class="card m-3 border-0">
+                <div class="card-body">
+                    <div class="card-title fw-bolder text-center h5 mb-3">
+                        <i class="fa-solid fa-address-card me-2"></i>
+                        Personal details
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text w-25">Username</span>
+                        <span aria-label="First name" class="form-control">{{ details.user.username }}</span>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text w-25">First name</span>
+                        <span aria-label="First name" class="form-control">{{ details.user.first_name }}</span>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text w-25">Last name</span>
+                        <span aria-label="First name" class="form-control">{{ details.user.last_name }}</span>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text w-25">Email</span>
+                        <span aria-label="First name" class="form-control">{{ details.user.email }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

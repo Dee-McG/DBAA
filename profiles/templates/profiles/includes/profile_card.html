@@ -1,0 +1,24 @@
+{% load static %}
+
+<div class="card m-3 border-0 align-items-center">
+    {% if user.avatar or details.avatar %}
+    <img src="{{ user.avatar.url }}" class="card-img-top mx-auto main-avatar-image" alt="user avatar image">
+    {% else %}
+    <img src="{% static 'profiles/images/default-avatar.png' %}" class="card-img-top mx-auto main-avatar-image" alt="default avatar image of rainbow coloured butterfly">
+    {% endif %}
+    <div class="my-4">
+        <a class="text-black" href="{% url 'edit_avatar' request.user.id %}" role="button">
+            Edit Avatar
+        </a>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title text-center fs-4">{{ user }}</h5>
+    </div>
+    <div class="card-body w-100">
+        <div class="d-grid gap-2">
+            <a href="{% url 'profile' request.user.id %}" class="btn btn-outline-primary" role="button">Following</a>
+            <a href="{% url 'view_details' request.user.id %}" class="btn btn-outline-primary" role="button">Personal details</a>
+            <a href="{% url 'edit_details' request.user.id %}" class="btn btn-outline-primary" role="button">Edit Details</a>
+        </div>
+    </div>
+</div>
