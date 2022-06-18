@@ -52,7 +52,7 @@ class EventDetailView(FormMixin, DetailView):
             EventNumbers.objects.create(
                 user=self.request.user,
                 event=event
-            )  
+            )
 
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
         
@@ -77,7 +77,7 @@ class EditEventView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Event
 
     def form_valid(self, form):
-        self.success_url = "/"
+        self.success_url = "/events/events"
         return super().form_valid(form)
 
     def test_func(self):
