@@ -6,7 +6,7 @@ from .models import UserProfile
 from .forms import UserAvatarForm
 
 
-class UserProfileView(LoginRequiredMixin, DetailView):
+class UserProfileView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
     """View to show user profile"""
 
     template_name = 'profiles/profile.html'
@@ -21,6 +21,9 @@ class UserProfileView(LoginRequiredMixin, DetailView):
         }
 
         return render(request, self.template_name, context)
+
+    def test_func(self):
+        return self.request.user == self.get_object().user
 
 
 class EditAvatarView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
