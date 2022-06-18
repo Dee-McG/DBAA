@@ -1,5 +1,6 @@
 from django.views.generic import CreateView, DetailView, ListView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.views.generic.edit import FormMixin
 from .models import Post, Reply
 from .forms import PostForm, ReplyForm
 
@@ -24,7 +25,7 @@ class CreatePostView(LoginRequiredMixin, CreateView):
     """
     form_class = PostForm
     template_name = 'posts/create_post.html'
-    success_url = "/posts/" 
+    success_url = "/posts/"
     model = Post
 
     def form_valid(self, form):
@@ -41,18 +42,20 @@ class DeletePostView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return self.request.user == self.get_object().user
 
 
-class ViewPostView(LoginRequiredMixin, DetailView):
+class ViewPostView(LoginRequiredMixin, FormMixin, DetailView):
     """
     A view to see a posts and its replies
     """
     template_name = 'posts/view_post.html'
     model = Post
+    form_class = ReplyForm
 
     def get_context_data(self, **kwargs):
         # Get post and reply any data and add it to the context
         context = {
             'posts': self.model.objects.filter(pk=self.kwargs['pk']),
             'replies': Reply.objects.filter(rid=self.kwargs['pk']),
+            'form': ReplyForm(),
         }
         return context
 
@@ -79,7 +82,6 @@ class EditPostView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 class CreateReplyView(LoginRequiredMixin, CreateView):
     model = Reply
     form_class = ReplyForm
-    template_name = 'posts/create_reply.html'
 
     def form_valid(self, form):
         # if form is valid return to post
