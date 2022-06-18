@@ -15,6 +15,23 @@
     <!-- Event -->
     <div class="post-con">
         <h1 class="fs-4 text-center">{{event.title}}</h1>
+
+        
+        {% if request.user == event.user %}
+        <div class="text-center">
+            <span>
+                <a href="{% url 'delete_event' event.id %}" class="delete large-icon" aria-label="Click to delete event">
+                    <i class="fa-solid fa-x"></i>
+                </a>
+            </span>
+            <span class="m-2 text-center">
+                <a href="{% url 'edit_event' event.id %}" class="delete large-icon" aria-label="Click to edit event">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                </a>
+            </span>
+        </div>
+        {% endif %}
+
         <span class="sm-txt d-block text-center">Created By: <strong>{{event.user}}</strong> on
             {{event.date}}</span>
         {% if event.image.url is not none %}
