@@ -44,8 +44,12 @@
 }
 
 .welcome-text > h2 {
-    margin-bottom: 15px;
+    margin-bottom: 40px;
     text-align: center;
+}
+
+.welcome-title {
+    font-size: 1.7rem;
 }
 
 /* Section Divider */
@@ -116,3 +120,149 @@
     height: 800px;
     background-color: white;
 }
+
+/* Responsiveness */
+
+@media screen and (max-width: 1120px) {
+
+  .welcome {
+    height: 600px;
+  }
+
+}
+
+@media screen and (max-width: 1050px) {
+
+    .welcome-image > img {
+      width: 450px;
+    }
+  
+  }
+
+@media screen and (max-width: 950px) {
+
+    .welcome-image > img {
+      width: 400px;
+    }
+  
+  }
+
+@media screen and (max-width: 880px) {
+
+    .welcome-image > img {
+      width: 350px;
+    }
+  
+  }  
+
+
+/* MOBILE/TABLET */
+
+@media screen and (max-width: 803px) {
+
+    .main-header {
+        height: 500px;
+    }
+
+    .welcome {
+        flex-direction: column;
+        height: 820px;
+    }
+
+    .welcome-text {
+        width: 80%;
+    }
+
+    .welcome-image {
+        width: 70%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .welcome-image > img {
+        width: 100%;
+    }
+
+}
+
+@media screen and (max-width: 650px) {
+
+    .main-header {
+        height: 400px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+
+    .main-titles {
+        margin-left: 50px;
+    }
+
+    .welcome-image {
+        width: 80%;
+    }
+
+}
+
+@media screen and (max-width: 465px) {
+
+    .main-titles {
+        margin-left: 40px;
+    }
+
+    .main-header {
+        height: 300px
+    }
+
+    h1 {
+        font-size: 1.7rem;
+    }
+
+    .title-cta {
+        font-size: 1.3rem;
+    }
+
+}
+
+@media screen and (max-width: 400px) {
+
+    .main-titles {
+        margin-left: 20px;
+    }
+
+    .welcome {
+        height: 900px;
+    }
+
+    .welcome-image {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 350px) {
+
+    .main-header {
+        height: 250px;
+    }
+}
+
+@media screen and (max-width: 332px) {
+
+    .title-cta {
+        font-size: 1.2rem;
+    }
+}
+
+
+@media screen and (max-width: 320px) {
+
+    .main-titles {
+        margin-left: 10px;
+    }
+
+    .welcome {
+        height: 950px;
+    }
+}
+
+
