@@ -8,15 +8,46 @@
 
 {% block content %}
 {% if request.user.id == user_id %}
-    <div class="profile-page-bg">
-        <h1>Profile page</h1>
-        <p>owner of page: {{ profile_name }}<p>
-        <p>current user: {{ request.user.username }}<p>
+    <div class="container">
+        <div class="text-center my-3">
+            <h1>My Profile</h1>
+        </div>
+        <div class="row">
+            <div class="col-4 border border-1">
+                <div class="card m-3 border-0 align-items-center">
+                    {% if user.avatar %}
+                    <img src="{{ user.avatar.url }}" class="card-img-top mx-auto main-avatar-image" alt="default avatar image of rainbow coloured butterfly">
+                    {% else %}
+                    <img src="{% static 'profiles/images/default-avatar.png' %}" class="card-img-top mx-auto main-avatar-image" alt="user avatar image">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title text-center fs-4">{{ user }}</h5>
+                    </div>
+                    <div class="card-body w-100">
+                        <div class="d-grid gap-2">
+                            <a href="#" class="btn btn-outline-primary" role="button">Following</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-8 border border-1">
+                <div class="card m-3 border-0">
+                    <div class="card-body">
+                        <div class="card-title fw-bolder text-center h5 mb-3"><i class="fa-solid fa-users me-2"></i>Following</div>
+                        <div class="row">
+                            <!-- Loop following users-->
+                            content
+                            <!-- end loop-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 {% else %}
 <div class="profile-page-bg">
     <h1>Profile page</h1>
-    <p>owner of page: {{ profile_name }}<p>
+    <p>owner of page: {{ user }}<p>
     <p>current user: {{ request.user.username }}</p>
 </div>
 {% endif %}

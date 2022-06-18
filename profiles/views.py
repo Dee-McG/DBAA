@@ -11,9 +11,11 @@ class UserProfileView(LoginRequiredMixin, DetailView):
     model = UserProfile
 
     def get(self, request, user_id):
-        profile_name = get_object_or_404(self.model, user=user_id)
+        user = get_object_or_404(self.model, user=user_id)
 
-        context = {'profile_name': profile_name,
-                   'user_id': user_id}
+        context = {
+            'user_id': user_id,
+            'user': user,
+        }
 
         return render(request, self.template_name, context)
