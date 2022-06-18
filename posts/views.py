@@ -6,7 +6,7 @@ from .forms import PostForm, ReplyForm
 
 
 #Posts
-class PostsView(LoginRequiredMixin, ListView):
+class PostsView(ListView):
     """ A view to return a list of posts """
     template_name = "posts/posts.html"
     model = Post
