@@ -1,4 +1,3 @@
-from django.http import HttpResponseRedirect
 from django.views.generic import CreateView, DetailView, ListView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic.edit import FormMixin
@@ -11,7 +10,7 @@ class PostsView(LoginRequiredMixin, ListView):
     """ A view to return a list of posts """
     template_name = "posts/posts.html"
     model = Post
-    success_url = "/posts/" 
+    success_url = "/posts/"
     context_object_name = 'posts'
 
     def get_queryset(self):
@@ -26,7 +25,7 @@ class CreatePostView(LoginRequiredMixin, CreateView):
     """
     form_class = PostForm
     template_name = 'posts/create_post.html'
-    success_url = "/posts/" 
+    success_url = "/posts/"
     model = Post
 
     def form_valid(self, form):

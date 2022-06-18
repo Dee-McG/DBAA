@@ -1,9 +1,8 @@
-
 from django.views.generic import ListView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .models import Friend
 from django.contrib.auth.models import User
-from posts.models import Post, Reply
+from posts.models import Post
+from .models import Friend
 
 
 class FriendsView(LoginRequiredMixin, ListView):
