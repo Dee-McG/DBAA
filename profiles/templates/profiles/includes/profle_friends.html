@@ -1,0 +1,25 @@
+{% load static %}
+<div class="card-title fw-bolder text-center h5 mb-3"><i class="fa-solid fa-users me-2"></i>Friends</div>
+    <div class="row">
+        <!-- Loop user's friends here -->
+        <div class="col-6">
+            <div class="card">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <!-- if user has no avatar -->
+                        <img src="{% static 'profiles/images/default-avatar.png' %}" class="img-fluid d-flex justify-content-center align-items-center mx-auto following-avatar-image" alt="default avatar image of rainbow coloured butterfly">
+                        <!-- if user has avatar -->
+                        <img src="{{ user.avatar.url }}" class="card-img-top mx-auto main-avatar-image" alt="default avatar image of rainbow coloured butterfly">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="fs-5 fw-light">Username</h5>
+                            <button class="btn btn-primary btn-dark">Unfollow</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end loop-->
+    </div>
+</div>
