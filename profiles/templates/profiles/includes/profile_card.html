@@ -1,7 +1,7 @@
 {% load static %}
 
 <div class="card m-3 border-0 align-items-center">
-    {% if user.avatar %}
+    {% if user.avatar or details.avatar %}
     <img src="{{ user.avatar.url }}" class="card-img-top mx-auto main-avatar-image" alt="user avatar image">
     {% else %}
     <img src="{% static 'profiles/images/default-avatar.png' %}" class="card-img-top mx-auto main-avatar-image" alt="default avatar image of rainbow coloured butterfly">
@@ -16,7 +16,8 @@
     </div>
     <div class="card-body w-100">
         <div class="d-grid gap-2">
-            <a href="#" class="btn btn-outline-primary" role="button">Following</a>
+            <a href="{% url 'profile' request.user.id %}" class="btn btn-outline-primary" role="button">Following</a>
+            <a href="{% url 'view_details' request.user.id %}" class="btn btn-outline-primary" role="button">Personal details</a>
         </div>
     </div>
 </div>

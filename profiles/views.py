@@ -27,6 +27,26 @@ class UserProfileView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
         return self.request.user == self.get_object().user
 
 
+class UserDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
+    """View to show user profile"""
+
+    template_name = 'profiles/personal_details.html'
+    model = UserProfile
+
+    def get(self, request, pk):
+        user = get_object_or_404(self.model, user=self.request.user)
+
+        context = {
+            'user': user,
+            'details': user,
+        }
+
+        return render(request, self.template_name, context)
+
+    def test_func(self):
+        return self.request.user == self.get_object().user
+
+
 class EditAvatarView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     """Update user avatar"""
 
