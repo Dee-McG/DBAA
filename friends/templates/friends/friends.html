@@ -3,20 +3,20 @@
 
 {% block css %}
 {{ block.super }}
-<link rel="stylesheet" href="{% static 'posts/css/posts.css' %}">
+<link rel="stylesheet" href="{% static 'friends/css/friend.css' %}">
 {% endblock %}
 
 {% block content %}
 
 <div class="container d-flex flex-column">
     <div class="text-center mt-3">
-        <h1>Discussion Boards</h1>
+        <h1>Friends Feed</h1>
     </div>
 
     <div>
-        <div class="d-flex flex-row justify-content-between">
+        <div class="d-flex justify-content-between">
             <div>
-                <a href="{% url 'friends' %}">Following</a>
+                <a onclick="history.back()" class="back-link"><i class="fa-solid fa-angle-left arrow"></i>Back</a>
             </div>
             <div>
                 <a href="{% url 'create_post' %}">Create Post</a>

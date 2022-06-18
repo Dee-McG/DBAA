@@ -15,14 +15,6 @@
     width: 100%;
 }
 
-/* form {
-    border-radius: 5px;
-    background-color: #f3e775;
-    border: 0.5px solid #cdcdcd;
-    padding: .5rem;
-    margin: .5rem;
-} */
-
 .delete {
     font-size: 10px;
     color: red;
@@ -32,15 +24,8 @@
     font-size: 1rem;
 }
 
-.posts {
-    padding: .5rem;
-    margin: 1rem;
-}
-
 .post-bor {
-    border-top: .5px solid #bf9b9b;
-    border-left: .5px solid #bf9b9b;
-    border-right: .5px solid #bf9b9b;
+    border: .5px solid #bf9b9b;
     border-radius: 2px;
     background-color: #f3e775;
     display: flex;
