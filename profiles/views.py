@@ -42,7 +42,7 @@ class UserProfileView(LoginRequiredMixin, DetailView):
             'user_id': pk,
             'user': user,
             'following': following,
-            'user_profile': get_object_or_404(self.model, user=pk)
+            'user_profile': user_profile
         }
 
         return render(request, self.template_name, context)
