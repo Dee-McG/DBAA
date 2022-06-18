@@ -27,7 +27,7 @@ class CreateEventView(CreateView):
     form_class = EventForm
     model = Event
     template_name = "events/create_event.html"
-    success_url = "/"
+    success_url = "/events/events"
 
     def form_valid(self, form):
         form.instance.user = self.request.user

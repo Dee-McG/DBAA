@@ -7,7 +7,6 @@
 {% endblock %}
 
 {% block content %}
-{% for event in events %}
 <div class="container mt-2">
     <a href="{% url 'events' %}" class="back-link"><i class="fa-solid fa-angle-left arrow"></i>Back</a>
 </div>
@@ -31,15 +30,13 @@
     <form method="POST">
         {% csrf_token %}
         {% if going_event %}
-        <strong><i class="fa-solid fa-thumbs-up"></i></strong>
-        <button type="submit" name="q" value="{{event.pk}}" class="btn btn-info">Not Going</button>
+        <button type="submit" name="q" value="{{event.pk}}" class="btn btn-info"><i class="fa-solid fa-thumbs-up"></i></button>
         {% else %}
-        <strong><i class="fa-regular fa-thumbs-up"></i></strong>
-        <button type="submit" name="q" value="{{event.id}}" class="btn btn-info">Going</button>
+        <strong></strong>
+        <button type="submit" name="q" value="{{event.id}}" class="btn btn-info"><i class="fa-regular fa-thumbs-up"></i></button>
         {% endif %}
     </form>
     <strong class="text-secondary">{{ number }} Going{{ number|pluralize }}</strong>
-
     {% else %}
     <a class="btn btn-outline-info" href="{% url 'account_login' %}">Log in to use the going to the event button!</a><br>
     {% endif %}
