@@ -18,6 +18,7 @@
         <div class="d-grid gap-2">
             <a href="{% url 'profile' request.user.id %}" class="btn btn-outline-primary" role="button">Following</a>
             <a href="{% url 'view_details' request.user.id %}" class="btn btn-outline-primary" role="button">Personal details</a>
+            <a href="{% url 'edit_details' request.user.id %}" class="btn btn-outline-primary" role="button">Edit Details</a>
         </div>
     </div>
 </div>
