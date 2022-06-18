@@ -18,11 +18,13 @@
         <div class="col-8 border border-1">
             <div class="card m-3 border-0">
                 <div class="card-body">
-                    <div class="card-title fw-bolder text-center h5 mb-3"><i class="fa-solid fa-users me-2"></i>Following</div>
+                    <div class="card-title fw-bolder text-center h5 mb-3"><i class="fa-solid fa-image me-2"></i></i>Edit Avatar</div>
                     <div class="row">
-                        <!-- Loop following users-->
-                        content
-                        <!-- end loop-->
+                        <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ form|crispy }}
+                            <button type="submit" class="btn btn-dark">Submit</button>
+                        </form>
                     </div>
                 </div>
             </div>
