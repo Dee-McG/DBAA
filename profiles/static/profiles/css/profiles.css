@@ -1,3 +1,5 @@
-.profile-page-bg {
-    background-color: fuchsia;
+.main-avatar-image {
+  height: 10rem;
+  width: 10rem;
+  border-radius: 50%;
 }

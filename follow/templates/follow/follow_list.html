@@ -39,7 +39,10 @@
                     <a href="{% url 'view_post' post.did %}" class="title-anchor">{{post.title}}</a>
                 </div>
                 <div class="d-block">
-                    <span class="sub-title">Posted by {{post.user}} on {{post.time}}</span>
+                    <span class="sub-title">Posted by 
+                        <a href="{% url 'profile' post.user.id %}" class="user">
+                            <strong>{{post.user}}</strong></a> on {{post.time}}
+                    </span>
                 </div>
             </div>
         </div>
