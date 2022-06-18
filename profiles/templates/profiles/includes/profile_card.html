@@ -6,15 +6,26 @@
     {% else %}
     <img src="{% static 'profiles/images/default-avatar.png' %}" class="card-img-top mx-auto main-avatar-image" alt="default avatar image of rainbow coloured butterfly">
     {% endif %}
+    {% if user_profile_str == user_str %}
     <div class="my-4">
         <a class="text-black" href="{% url 'edit_avatar' request.user.id %}" role="button">
             Edit Avatar
         </a>
     </div>
+    {% endif %}
     <div class="card-body">
         <h5 class="card-title text-center fs-4">{{ user }}</h5>
     </div>
+    {{ user }}
+    {{ user_profile }}
     <div class="card-body w-100">
+        {% if user_profile_str == user_str %}
+        <div class="d-grid gap-2">
+            <a href="{% url 'profile' request.user.id %}" class="btn btn-outline-primary" role="button">Friends</a>
+            <a href="{% url 'view_details' request.user.id %}" class="btn btn-outline-primary" role="button">Personal details</a>
+            <a href="{% url 'edit_details' request.user.id %}" class="btn btn-outline-primary" role="button">Edit Details</a>
+        </div>
+        {% else %}
         <div class="d-grid gap-2">
             <form method="POST">
                 {% csrf_token %}
@@ -24,8 +35,7 @@
                     <button type="submit" class="btn btn-outline-primary">Follow</button>
                 {% endif %}
             </form>
-            <a href="{% url 'view_details' request.user.id %}" class="btn btn-outline-primary" role="button">Personal details</a>
-            <a href="{% url 'edit_details' request.user.id %}" class="btn btn-outline-primary" role="button">Edit Details</a>
         </div>
+        {% endif %}
     </div>
 </div>

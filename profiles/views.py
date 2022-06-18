@@ -19,34 +19,37 @@ class UserProfileView(LoginRequiredMixin, DetailView):
     def post(self, request, pk):
         """Function to toggle follow on and off"""
         follower = get_object_or_404(User, id=pk)
-        user = get_object_or_404(User, id=self.request.user.id)
-        already_following = Follow.objects.filter(user=user, following=follower)
-        
+        user_profile = get_object_or_404(User, id=self.request.user.id)
+        already_following = Follow.objects.filter(
+            user=user_profile, following=follower)
+
         if already_following:
             already_following.delete()
         else:
             Follow.objects.create(
-                    user=user,
-                    following=follower
-                )
+                user=user_profile,
+                following=follower
+            )
 
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
     def get(self, request, pk):
-        user = get_object_or_404(User, id=self.request.user.id)
+        user_profile = get_object_or_404(User, id=self.request.user.id)
         follower = get_object_or_404(User, id=pk)
-        user_profile = get_object_or_404(self.model, user=pk)
-        following = Follow.objects.filter(user=user, following=follower)
+        user = get_object_or_404(self.model, user=pk)
+        following = Follow.objects.filter(
+            user=user_profile, following=follower)
 
         context = {
             'user_id': pk,
             'user': user,
+            'user_str': str(user),
             'following': following,
-            'user_profile': user_profile
+            'user_profile': user_profile,
+            'user_profile_str': str(user_profile)
         }
 
         return render(request, self.template_name, context)
-
 
 
 class UserDetailView(LoginRequiredMixin, DetailView):
