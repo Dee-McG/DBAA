@@ -41,3 +41,13 @@ class EditAvatarView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def test_func(self):
         return self.request.user == self.get_object().user
+
+    def get_context_data(self):
+        user = get_object_or_404(self.model, user=self.request.user)
+
+        context = {
+            'user': user,
+            'form': UserAvatarForm(instance=user)
+        }
+
+        return context
