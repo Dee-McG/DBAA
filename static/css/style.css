@@ -48,6 +48,11 @@ footer {
     font-weight: 500;
 }
 
+.whitesmoke-bg {
+    background-color: whitesmoke;
+}
+
+
 /* Button Style */
 
 .create-btn {
