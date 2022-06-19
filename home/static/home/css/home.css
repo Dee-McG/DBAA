@@ -117,11 +117,155 @@
 /* Upcoming Events */
 
 .upcoming-events {
-    height: 800px;
-    background-color: white;
+    height: 1200px;
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgb(255, 255, 255)), url(/static/home/images/brick-background.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.upcoming-events-title {
+    display: flex;
+    justify-content: center;
+    height: 150px;
+    align-items: center;
+}
+
+.upcoming-events-title {
+    color: white;
+}
+
+.upcoming-event-image-div {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.upcoming-event-image {
+    border-radius: 10px;
+}
+
+.upcoming-events-listing-title {
+    font-size: 1.2rem;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.upcoming-events-listings {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.upcoming-events-listing {
+    width: 400px;
+    height: 480px;
+    border: black 1px solid;
+    margin-bottom: 30px;
+    background-color: rgba(255, 255, 255, 0.828);
+    border-radius: 10px;
+    transition: box-shadow 0.5s;
+}
+
+.upcoming-events-listing:hover {
+    box-shadow: 5px 10px 8px rgba(0, 0, 0, 0.627);
+}
+
+.upcoming-event-details-div {
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-right: 30px;
+}
+
+.upcoming-event-details-div > p > i {
+    font-size: 1.1rem;
+    vertical-align:auto;
+    margin-right: 10px;
+}
+
+.upcoming-event-details-div > p {
+    margin-left: 30px;
+}
+
+.upcoming-event-location {
+    display: flex;
+    align-items:center;
+    justify-content:flex-start;
+}
+
+.details-button-div {
+    display: flex;
+    justify-content: end;
+}
+
+.upcoming-events-more-details-button {
+    background:#fb940d;
+    border: black 1px solid;
+    border-radius: 5px;
+    transition: background-color 0.5s, color 0.5s;
+    color: white;
+}
+
+.upcoming-events-more-details-button:hover {
+    background-color: rgb(185, 40, 176);
+    color: white;
+}
+
+.fa-calendar-day {
+    color: #b166ac;
+}
+
+.fa-clock {
+    color: #b166ac;
+}
+
+.fa-location-dot {
+    color: #b166ac;
+    padding-right: 8px;
+}
+
+.fa-money-bill {
+    color: #b166ac;
+}
+
+.view-all-button {
+    background-color: #fb940d;
+    border: black 1px solid;
+    border-radius: 5px;
+    transition: background-color 0.5s, color 0.5s;
+    color: white;
+    padding: 8px;
+}
+
+.view-all-button:hover {
+    background-color: rgb(185, 40, 176);
+}
+
+.upcoming-events-button {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
 }
 
 /* Responsiveness */
+
+@media screen and (max-width: 1214px) {
+
+    .upcoming-events {
+        height: 1800px;
+    }
+  
+  }
 
 @media screen and (max-width: 1120px) {
 
@@ -154,6 +298,19 @@
     }
   
   }  
+
+@media screen and (max-width: 814px) {
+
+    .upcoming-events {
+        height: 3340px;
+        background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgb(255, 255, 255)), url(/static/home/images/brick-background.jpg);
+    }
+
+    .upcoming-events-listings {
+        align-content: center;
+    }
+  
+  }    
 
 
 /* MOBILE/TABLET */
@@ -224,6 +381,23 @@
 
 }
 
+@media screen and (max-width: 435px) {
+
+    .upcoming-events-listing {
+        width: 90%;
+        height: 500px;
+    }
+
+    .upcoming-events {
+        height: 3450px;
+    }
+
+    .upcoming-event-details-div {
+        height: 250px;
+    }
+
+}
+
 @media screen and (max-width: 400px) {
 
     .main-titles {
@@ -237,6 +411,22 @@
     .welcome-image {
         width: 90%;
     }
+
+    .upcoming-events-listing {
+        height: 530px;
+    }
+
+    .upcoming-events {
+        height: 3640px;
+    }
+}
+
+@media screen and (max-width: 374px) {
+
+   .upcoming-events-listing {
+    height: 530px;
+   }
+
 }
 
 @media screen and (max-width: 350px) {
