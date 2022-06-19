@@ -16,7 +16,6 @@ class EventList(ListView):
     model = Event
     template_name = "events/events.html"
     context_object_name = "events"
-    paginate_by = 6
 
     def get_queryset(self):
         query = self.request.GET.get('q')
