@@ -63,18 +63,24 @@
     </div>
     <div class="upcoming-events-listings">
         {% for event in next_events %}
-        <div class="upcoming-events-row-1">
-            <p>{{event.title}}</p>
+        <div class="upcoming-events-listing">
+            <div class="upcoming-event-image-div"><img src="{{event.image.url}}" alt="Event image" class="upcoming-event-image"></div>
+            <h3 class="upcoming-events-listing-title">{{event.title}}</h3>
+            <div class="upcoming-event-details-div">
+                <p class="upcoming-event-date"><i class="fa-solid fa-calendar-day"></i> {{event.e_time.date}}</p>
+                <p class="upcoming-event-time"><i class="fa-solid fa-clock"></i> {{event.e_time.time}}</p>
+                <p class="upcoming-event-location"><i class="fa-solid fa-location-dot"></i> {{event.location}}</p>
+                <p class="upcoming-event-price"><i class="fa-solid fa-money-bill"></i> £{{event.fee}}</p>
+                <div class="details-button-div">
+                    <a href="{% url 'view_event' event.id %}"><button class="upcoming-events-more-details-button">More Details</button></a>
+                </div>
+            </div>
         </div>
         {% endfor %}
     </div>
     <div class="upcoming-events-button">
-        <a href="#"><button>View All</button></a>
+        <a href="{% url 'events' %}"><button class="view-all-button">View All</button></a>
     </div>
 </section>
-
-{% for feat in featured %}
-    {{feat.title}}
-{% endfor %}
 
 {% endblock %}
