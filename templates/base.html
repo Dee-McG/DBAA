@@ -25,7 +25,9 @@
             </div>
         </div>
         <ul class="main-nav-links">
+            {% if not user.is_authenticated %}
             <li><a href="{% url 'home' %}" class="nav-link" id="nav-link-home">Home</a></li>
+            {% endif %}
             <li><a href="{% url 'events' %}" class="nav-link" id="nav-link-events">Events</a></li>
             <li><a href="{% url 'posts' %}" class="nav-link" id="nav-link-discussions">Discussions</a></li>
             {% if not user.is_authenticated %}
