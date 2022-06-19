@@ -5,7 +5,6 @@ from django.views.generic.edit import FormMixin
 from .models import Event, EventNumbers, CommentEvent
 from .forms import EventForm, EventCommentForm
 from datetime import date
-from django.db.models import Q
 
 
 class EventList(ListView):

@@ -1,7 +1,7 @@
 from django.views.generic import ListView
 from events.models import Event, EventNumbers
 from django.db.models import Count
-from django.db.models import Max
+from datetime import date
 
 
 class IndexView(ListView):
@@ -20,7 +20,7 @@ class IndexView(ListView):
         for event in events:
             featured = Event.objects.filter(id=event['event'])
         
-        next_events = Event.objects.all()[:6]
+        next_events = Event.objects.filter(e_time__gt=date.today())[:6]
 
         context = {
             "featured": featured,
