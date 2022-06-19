@@ -34,17 +34,25 @@ class UserProfileView(LoginRequiredMixin, DetailView):
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
     def get(self, request, pk):
-        user_profile = get_object_or_404(User, id=self.request.user.id)
-        user = get_object_or_404(self.model, user=pk)
-        users_following = get_object_or_404(User, id=pk)
+        # logged in user
+        user = get_object_or_404(User, id=self.request.user.id)
+        # user profile (whos profile you're viewing)
+        user_profile = get_object_or_404(self.model, user=pk)
+        # user object of whos profile you're viewing
+        profile_user = get_object_or_404(User, id=pk)
+        # list of users you're following
+        users_following = Follow.objects.filter(
+            user=profile_user)
+        # used to check if already following the user you're viewing
         following = Follow.objects.filter(
-            user=users_following)
+            user=user, following=profile_user)
 
         context = {
             'user_id': pk,
             'user': user,
             'user_str': str(user),
             'following': following,
+            'users_following': users_following,
             'user_profile': user_profile,
             'user_profile_str': str(user_profile)
         }

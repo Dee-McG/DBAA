@@ -1,8 +1,8 @@
 {% load static %}
 <div class="d-flex flex-wrap justify-content-between">
     <div class="card-title fw-bolder text-center h5 mb-3 w-100"><i class="fa-solid fa-users me-2"></i>Friends</div>
-    {% for friend in following %}
-        <div class="card flex-row card-width">
+    {% for friend in users_following %}
+        <div class="card flex-row card-width mt-2">
             <div class="col-md-4 d-flex justify-content-center align-items-center">
                 <!-- if user has no avatar -->
                 <img src="{% static 'profiles/images/default-avatar.png' %}" class="img-fluid d-flex justify-content-center align-items-center mx-auto following-avatar-image" alt="default avatar image of rainbow coloured butterfly">

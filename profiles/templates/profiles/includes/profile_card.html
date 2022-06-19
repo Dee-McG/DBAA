@@ -12,12 +12,15 @@
             Edit Avatar
         </a>
     </div>
-    {% endif %}
     <div class="card-body">
         <h5 class="card-title text-center fs-4">{{ user }}</h5>
     </div>
-    {{ user }}
-    {{ user_profile }}
+    {% else %}
+    <div class="card-body">
+        <h5 class="card-title text-center fs-4">{{ user_profile }}</h5>
+    </div>
+    {% endif %}
+
     <div class="card-body w-100">
         {% if user_profile_str == user_str %}
         <div class="d-grid gap-2">
@@ -30,9 +33,9 @@
             <form method="POST">
                 {% csrf_token %}
                 {% if following %}
-                    <button type="submit" class="btn btn-outline-primary">Following</button>
+                    <button type="submit" class="btn btn-outline-primary w-100">Following</button>
                 {% else %}
-                    <button type="submit" class="btn btn-outline-primary">Follow</button>
+                    <button type="submit" class="btn btn-outline-primary w-100">Follow</button>
                 {% endif %}
             </form>
         </div>
