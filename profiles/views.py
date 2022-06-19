@@ -107,6 +107,9 @@ class UserEventView(LoginRequiredMixin, DetailView):
         # user object of who's profile you're viewing
         profile_user = get_object_or_404(User, id=pk)
 
+        following = Follow.objects.filter(
+            user=user, following=profile_user)
+
         events = EventNumbers.objects.filter(user=profile_user)
         events_url = f"/profile/view-events/{pk}/"
 
@@ -116,6 +119,7 @@ class UserEventView(LoginRequiredMixin, DetailView):
             "user_str": str(user),
             "user_profile": user_profile,
             "user_profile_str": str(user_profile),
+            "following": following,
             "events": events,
             "events_url": events_url
         }
