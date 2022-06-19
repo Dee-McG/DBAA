@@ -89,6 +89,28 @@ This will allow the author to have full control over the post and commenters con
 
 There will also be a reply button that hides and shows the comment form to allow users to comment on the post.
 
+**User Profile Page**
+
+The user profile page is displayed differently for users viewing their own profile and viewing a profile of another user.
+
+Features when viewing own profile:
+
+- Avatar
+- Edit Avatar button that loads the edit avatar form in the second card to allow users to update their avatar
+- Username
+- Friends Button - This displays a list of all users you are following in the second card
+- Events Button - This displays a list of all events you marked as going to in the second card
+- Personal Details - Displays your personal details in the second card
+- Edit Details Button - Edit details form will be displayed in the second card to allow users to update their details
+
+Features when viewing another users profile:
+
+- Avatar
+- Follow Button that can be used to follow or unfollow users
+- Events Button - Displays a list of events the user has marked going to in the second card
+- Friends Button - Displays all users the user is following on the second card
+
+
 ## Wireframes
 
 ## Database Design
