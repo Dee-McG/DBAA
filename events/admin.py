@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Event, EventNumbers
+from .models import Event, EventNumbers, CommentEvent
 
 
 class EventAdmin(admin.ModelAdmin):
@@ -13,6 +13,16 @@ class EventAdmin(admin.ModelAdmin):
         'e_time',
     )
 
+
+class CommentEventAdmin(admin.ModelAdmin):
+    """
+    Class to view Event comments on the admin panel
+    """
+    list_display = (
+        'body',
+    )
+
+
 class EventNumbersAdmin(admin.ModelAdmin):
     """
     Class to view EventNumbers on the admin panel
@@ -25,3 +35,4 @@ class EventNumbersAdmin(admin.ModelAdmin):
 
 admin.site.register(Event, EventAdmin)
 admin.site.register(EventNumbers, EventNumbersAdmin)
+admin.site.register(CommentEvent, CommentEventAdmin)

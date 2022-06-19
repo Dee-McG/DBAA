@@ -2,8 +2,9 @@ from django.http import HttpResponseRedirect
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic.edit import FormMixin
-from .models import Event, EventNumbers
-from .forms import EventForm
+from .models import Event, EventNumbers, CommentEvent
+from .forms import EventForm, EventCommentForm
+from datetime import date
 
 
 class EventList(ListView):
@@ -16,7 +17,7 @@ class EventList(ListView):
     paginate_by = 6
     
     def get_queryset(self): 
-        events = Event.objects.order_by("-e_time")
+        events = Event.objects.filter(e_time__gt=date.today()).order_by("-e_time")
         return events
 
 
@@ -51,7 +52,7 @@ class EventDetailView(LoginRequiredMixin, FormMixin, DetailView):
         else:
             EventNumbers.objects.create(
                 user=self.request.user,
-                event=event
+                event=event,
             )
 
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
@@ -60,13 +61,30 @@ class EventDetailView(LoginRequiredMixin, FormMixin, DetailView):
         data = self.get_object()
 
         going_event = EventNumbers.objects.filter(user=self.request.user, event=data)
+        comments = CommentEvent.objects.filter(event=data.pk)
 
         context = {
             "event": data,
             "number": EventNumbers.objects.filter(event=self.kwargs['pk']).count,
-            "going_event": going_event
+            "going_event": going_event,
+            'form': EventCommentForm(),
+            'comments': comments
         }
         return context
+
+
+class CommentEventView(LoginRequiredMixin, CreateView):
+    model = CommentEvent
+    form_class = EventCommentForm
+
+    def form_valid(self, form):
+        # if form is valid return to post
+        pk = self.kwargs['pk']
+        self.success_url = f'/events/view/{pk}/'
+        form.instance.event = Event.objects.get(id=self.kwargs['pk'])
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
 
 class EditEventView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     """

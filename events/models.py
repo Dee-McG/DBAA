@@ -26,9 +26,25 @@ class Event(models.Model):
         return self.going.count()
 
 
+class CommentEvent(models.Model):
+    """
+    Comment event model
+    """
+    user = models.ForeignKey(User, related_name='event_user', on_delete=models.CASCADE)
+    event = models.ForeignKey(Event, related_name="comment_event", on_delete=models.CASCADE)
+    body = RichTextField(max_length=10000, null=False, blank=False)
+    time = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return str(self.body)
+
+
 class EventNumbers(models.Model):
     """
     Event model
     """
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='event_numbers')
+
+    def __str__(self):
+        return self.event.title
