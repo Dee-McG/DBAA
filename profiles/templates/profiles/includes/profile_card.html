@@ -6,7 +6,7 @@
     {% else %}
     <img src="{% static 'profiles/images/default-avatar.png' %}" class="card-img-top mx-auto main-avatar-image" alt="default avatar image of rainbow coloured butterfly">
     {% endif %}
-    {% if user_profile.user == request.user %}
+    {% if user_profile_str == user_str %}
     <div class="my-4">
         <a class="text-black" href="{% url 'edit_avatar' request.user.id %}" role="button">
             Edit Avatar
