@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.models import User
 from django.views.generic import DetailView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib import messages
 
 from .models import UserProfile
 from .forms import UserAvatarForm, UserDetailForm
@@ -26,11 +27,13 @@ class UserProfileView(LoginRequiredMixin, DetailView):
 
         if already_following:
             already_following.delete()
+            messages.success(self.request, f'No longer following {follower}')
         else:
             Follow.objects.create(
                 user=user_profile,
                 following=follower
             )
+            messages.success(self.request, f'Now following {follower}')
 
         return HttpResponseRedirect(request.META.get("HTTP_REFERER"))
 
@@ -154,6 +157,7 @@ class EditAvatarView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def form_valid(self, form):
         # if form is valid return profile
         self.success_url = f"/profile/{self.request.user.id}/"
+        messages.success(self.request, f'Avatar updated successfully')
         return super().form_valid(form)
 
     def test_func(self):
@@ -183,6 +187,7 @@ class EditDetailsView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def form_valid(self, form):
         # if form is valid return profile
         self.success_url = f"/profile/details/{self.request.user.id}/"
+        messages.success(self.request, f'Details successfully updated')
         return super().form_valid(form)
 
     def test_func(self):
