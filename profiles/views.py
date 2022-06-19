@@ -1,7 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.models import User
-from django.views.generic import DetailView, UpdateView
+from django.views.generic import DetailView, UpdateView, ListView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 from .models import UserProfile
@@ -53,10 +53,10 @@ class UserProfileView(LoginRequiredMixin, DetailView):
         following = Follow.objects.filter(
             user=user, following=profile_user)
 
-        events = EventNumbers.objects.filter(user=profile_user)
-        print(events)
-        for ev in events:
-            print(ev.event)
+        # events = EventNumbers.objects.filter(user=profile_user)
+        # print(events)
+        # for ev in events:
+        #     print(ev.event)
 
         context = {
             'user_id': pk,
@@ -66,7 +66,7 @@ class UserProfileView(LoginRequiredMixin, DetailView):
             'users_following': follow_lst,
             'user_profile': user_profile,
             'user_profile_str': str(user_profile),
-            'events': events
+            # 'events': events
         }
 
         return render(request, self.template_name, context)
@@ -88,6 +88,52 @@ class UserDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
 
     def test_func(self):
         return self.request.user == self.get_object().user
+
+
+class UserEventView(LoginRequiredMixin, DetailView):
+    """
+    A view to show user's events they are attending and show 
+    event's friends of other user's are attending
+    """
+
+    template_name = 'profiles/view_profile_events.html'
+    model = UserProfile
+
+    def get(self, request, pk):
+        # logged in user
+        user = get_object_or_404(User, id=self.request.user.id)
+        # user profile (who's profile you're viewing)
+        user_profile = get_object_or_404(self.model, user=pk)
+        # user object of who's profile you're viewing
+        profile_user = get_object_or_404(User, id=pk)
+        # list of follow objects of users you're following
+        users_following = Follow.objects.filter(user=profile_user)
+        # Iterate over users to get user_profiles
+        follow_lst = UserProfile.objects.filter(id=0)
+        for usr in users_following:
+            follow_lst = follow_lst | UserProfile.objects.filter(
+                id=usr.following.id)
+        # used to check if already following the user you're viewing
+        following = Follow.objects.filter(
+            user=user, following=profile_user)
+
+        events = EventNumbers.objects.filter(user=profile_user)
+        # print(events)
+        for ev in events:
+            print(ev)
+
+        context = {
+            'user_id': pk,
+            'user': user,
+            'user_str': str(user),
+            'following': following,
+            'users_following': follow_lst,
+            'user_profile': user_profile,
+            'user_profile_str': str(user_profile),
+            'events': events
+        }
+
+        return render(request, self.template_name, context)
 
 
 class EditAvatarView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):

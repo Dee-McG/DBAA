@@ -25,6 +25,7 @@
         {% if user_profile_str == user_str %}
         <div class="d-grid gap-2">
             <a href="{% url 'profile' request.user.id %}" class="btn {% if request.path == '/profile/1/' %} btn-primary {% else %} btn-outline-primary {% endif %}" role="button">Friends</a>
+            <a href="{% url 'view_profile_events' request.user.id %}" class="btn {% if request.path == '/profile/view-events/1/' %} btn-primary {% else %} btn-outline-primary {% endif %}" role="button">Events</a>
             <a href="{% url 'view_details' request.user.id %}" class="btn {% if request.path == '/profile/details/1/' %} btn-primary {% else %} btn-outline-primary {% endif %}" role="button">Personal details</a>
             <a href="{% url 'edit_details' request.user.id %}" class="btn {% if request.path == '/profile/edit-details/1/' %} btn-primary {% else %} btn-outline-primary {% endif %}" role="button">Edit Details</a>
         </div>
