@@ -85,7 +85,9 @@
             {% csrf_token %}
             {{ form|crispy }}
             {{ form.media }}
-            <button type="submit" class="create-btn">Submit</button>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="create-btn">Submit</button>
+            </div>
         </form>
     </div>
     
