@@ -9,6 +9,17 @@
 {% block content %}
 
 <div class="post-container d-flex flex-column">
+
+    <div class="container">
+        <form method='GET' id="search-form">
+            <input type='text' name='q' value='{{ request.GET.q }}' autocomplete="off" aria-label="Search Events"
+                placeholder="Search Events">
+            <button class="btn p-0" type='submit' value="Search Events">
+                <i class="fas fa-search"></i>
+            </button>
+        </form>
+    </div>
+
     <div class="text-center mt-3">
         <h1>Events</h1>
     </div>
@@ -18,7 +29,7 @@
         </div>
     </div>
 
-        {% for event in events %}
+    {% for event in events %}
     <div class="container mb-3 col-md-10">
         <div class="post-bor  justify-content-center">
             <div class="p-2">

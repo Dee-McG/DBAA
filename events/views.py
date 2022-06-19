@@ -2,6 +2,7 @@ from django.http import HttpResponseRedirect
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic.edit import FormMixin
+from django.db.models import Q
 from .models import Event, EventNumbers, CommentEvent
 from .forms import EventForm, EventCommentForm
 from datetime import date
@@ -15,9 +16,17 @@ class EventList(ListView):
     template_name = "events/events.html"
     context_object_name = "events"
     paginate_by = 6
-    
-    def get_queryset(self): 
-        events = Event.objects.filter(e_time__gt=date.today()).order_by("-e_time")
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        if query:
+            events = self.model.objects.filter(
+                Q(title__icontains=query) |
+                Q(body__icontains=query) |
+                Q(location__icontains=query)
+            )
+        else: 
+            events = Event.objects.filter(e_time__gt=date.today()).order_by("-e_time")
         return events
 
 
