@@ -4,12 +4,24 @@
   border-radius: 50%;
 }
 
-.card-width {
-  max-width: 100%;
+.following-avatar-image {
+  width: 50%;
+  margin: 5px;
 }
 
-@media only screen and (min-width: 600px) {
+.card-width {
+  max-width: 100%;
+  flex-direction: column;
+}
+
+@media only screen and (min-width: 800px) {
   .card-width {
     max-width: 49%;
+    flex-direction: row;
+  }
+
+  .following-avatar-image {
+    width: 100%;
+    padding-left: 5px;
   }
 }
