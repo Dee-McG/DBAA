@@ -2,13 +2,8 @@
     width: 100%;
 }
 
-form {
-    width: 100%;
-    border-radius: 5px;
-    background-color: #f3e775;
-    border: 0.5px solid #cdcdcd;
-    padding: .5rem;
-    margin: .5rem;
+main {
+    background-color: whitesmoke;
 }
 
 .delete {
@@ -26,13 +21,12 @@ form {
 }
 
 .post-bor {
-    border-top: .5px solid #bf9b9b;
-    border-left: .5px solid #bf9b9b;
-    border-right: .5px solid #bf9b9b;
-    border-radius: 2px;
-    background-color: #f3e775;
+    border: 1px solid #bf9b9b;
+    border-radius: 8px;
     display: flex;
     flex-direction: row;
+    overflow: hidden;
+    background-color: white;
 }
 
 .post-bor:last-of-type {
@@ -84,17 +78,8 @@ form {
     border-radius: 2px;
 }
 
-strong {
-    margin: 12px;
-}
-
 .hide {
     display: none;
-}
-
-#search-form {
-    background-color: white;
-    border: none;
 }
 
 @media only screen and (min-width: 500px) {
@@ -109,12 +94,6 @@ strong {
     .post-img {
         width: 60%;
     }
-    form {
-        width: 60%;
-        padding: 1rem;
-        margin: 1.5rem;
-    }
-
     .thumb-img {
         display: flex;
         height: 100px;
@@ -125,9 +104,5 @@ strong {
 @media only screen and (min-width: 1000px) {
     .post-img {
         width: 35%;
-    }
-
-    form {
-        width: 50%;
     }
 }
