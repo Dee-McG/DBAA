@@ -8,6 +8,7 @@ from .models import UserProfile
 from .forms import UserAvatarForm, UserDetailForm
 
 from follow.models import Follow
+from events.models import EventNumbers
 
 
 class UserProfileView(LoginRequiredMixin, DetailView):
@@ -51,6 +52,11 @@ class UserProfileView(LoginRequiredMixin, DetailView):
         following = Follow.objects.filter(
             user=user, following=profile_user)
 
+        events = EventNumbers.objects.filter(user=profile_user)
+        print(events)
+        for ev in events:
+            print(ev.event)
+
         context = {
             'user_id': pk,
             'user': user,
@@ -58,7 +64,8 @@ class UserProfileView(LoginRequiredMixin, DetailView):
             'following': following,
             'users_following': follow_lst,
             'user_profile': user_profile,
-            'user_profile_str': str(user_profile)
+            'user_profile_str': str(user_profile),
+            'events': events
         }
 
         return render(request, self.template_name, context)
@@ -72,7 +79,6 @@ class UserDetailView(LoginRequiredMixin, DetailView):
 
     def get(self, request, pk):
         user = get_object_or_404(self.model, user=self.request.user)
-
         context = {
             'user': user,
             'details': user,
