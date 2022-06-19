@@ -50,7 +50,7 @@
             </div>
             {% endif %}
             </div>
-            <div class="flex-column card-text">
+            <div class="d-flex flex-column justify-content-center card-text w-100">
                 <div>
                     <a href="{% url 'view_post' post.did %}" class="title-anchor">{{post.title}}</a>
                 </div>
@@ -59,6 +59,9 @@
                         <strong>{{post.user}}</strong>
                     </a> on {{post.time}}</span>
                 </div>
+            </div>
+            <div class="align-items-center justify-content-end w-25 me-3 btn-hide">
+                <a class="create-btn" href="{% url 'view_post' post.did %}">View Post</a>
             </div>
         </div>
         {% endfor %}

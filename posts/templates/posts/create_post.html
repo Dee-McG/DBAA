@@ -9,13 +9,13 @@
 {% block content %}
 
 <div class="container d-flex justify-content-center mb-3">
-    <form method="POST" action="{% url 'create_post' %}" class="post-con mb-2" enctype="multipart/form-data">
+    <form method="POST" action="{% url 'create_post' %}" class="post-con mb-2 w-100" enctype="multipart/form-data">
         <h1 class="d-block text-center title">Start A Discussion</h1>
         {% csrf_token %}
         {{ form|crispy }}
         {{ form.media }}
         <div class="d-flex justify-content-center">
-            <button type="submit" class="btn btn-dark">Post</button>
+            <button type="submit" class="create-btn">Post</button>
         </div>
     </form>
 </div>

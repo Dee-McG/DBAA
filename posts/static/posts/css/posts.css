@@ -96,6 +96,10 @@ main {
     border-radius: 8px;
 }
 
+.btn-hide {
+    display: none;
+}
+
 .hide {
     display: none;
 }
@@ -112,7 +116,7 @@ main {
 @media only screen and (min-width: 500px) {
     .thumb-img > img{
         display: flex;
-        width: 100px;
+        min-width: 100px;
         height: 100px;
     }
 }
@@ -125,8 +129,13 @@ main {
     .thumb-img {
         display: flex;
         height: 100px;
-        width: 100px;
+        min-width: 100px;
     }
+
+    .btn-hide {
+        display: flex;
+    }
+    
 }
 
 @media only screen and (min-width: 1000px) {
