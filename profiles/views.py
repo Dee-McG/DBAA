@@ -132,11 +132,11 @@ class EditDetailsView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return self.request.user.username == self.get_object().username
 
     def get_context_data(self):
-        user = get_object_or_404(UserProfile, id=self.request.user.id)
+        user_profile = get_object_or_404(UserProfile, id=self.request.user.id)
         data = get_object_or_404(self.model, id=self.request.user.id)
 
         context = {
-            'user': user,
+            'user_profile': user_profile,
             'form': UserDetailForm(instance=data)
         }
 
