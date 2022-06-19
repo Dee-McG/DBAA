@@ -47,7 +47,8 @@ class UserProfileView(LoginRequiredMixin, DetailView):
         # Iterate over users to get user_profiles
         follow_lst = UserProfile.objects.filter(id=0)
         for usr in users_following:
-            follow_lst = follow_lst | UserProfile.objects.filter(id=usr.following.id)
+            follow_lst = follow_lst | UserProfile.objects.filter(
+                id=usr.following.id)
         # used to check if already following the user you're viewing
         following = Follow.objects.filter(
             user=user, following=profile_user)
@@ -71,20 +72,22 @@ class UserProfileView(LoginRequiredMixin, DetailView):
         return render(request, self.template_name, context)
 
 
-class UserDetailView(LoginRequiredMixin, DetailView):
+class UserDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
     """View to show user profile"""
 
     template_name = 'profiles/personal_details.html'
     model = UserProfile
 
     def get(self, request, pk):
-        user = get_object_or_404(self.model, user=self.request.user)
+        user_profile = get_object_or_404(self.model, user=self.request.user)
         context = {
-            'user': user,
-            'details': user,
+            'user_profile': user_profile,
         }
 
         return render(request, self.template_name, context)
+
+    def test_func(self):
+        return self.request.user == self.get_object().user
 
 
 class EditAvatarView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
