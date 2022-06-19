@@ -99,6 +99,23 @@ class UserEventView(LoginRequiredMixin, DetailView):
     template_name = "profiles/view_profile_events.html"
     model = UserProfile
 
+    def post(self, request, pk):
+        """Function to toggle follow on and off"""
+        follower = get_object_or_404(User, id=pk)
+        user_profile = get_object_or_404(User, id=self.request.user.id)
+        already_following = Follow.objects.filter(
+            user=user_profile, following=follower)
+
+        if already_following:
+            already_following.delete()
+        else:
+            Follow.objects.create(
+                user=user_profile,
+                following=follower
+            )
+
+        return HttpResponseRedirect(request.META.get("HTTP_REFERER"))
+
     def get(self, request, pk):
         # logged in user
         user = get_object_or_404(User, id=self.request.user.id)
