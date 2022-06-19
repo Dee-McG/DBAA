@@ -19,11 +19,51 @@
 
 ## Introduction
 
+Welcome to DBAA
+
+This project was created for the Code Institute Pride hackathon. It is a social networking and events platform for LGBTQ+ users to advertise events and connect with other users.
+
 ## Wireframes
 
 ## Database Design
 
 ## Features
+
+**Home Page**
+
+The home page contains: 
+- Hero Image
+- An introduction to the website for users to understand what the website is about. 
+- A featured event - This will show the most popular event
+- The next six upcoming events so users can see the next events scheduled by closest to current date
+This page is not visible when logged in.
+
+**Event List Page**
+
+This page has a list of all upcoming events that are greater than today, it displays the following information:
+- Title
+- Created by (username & date time)
+- Thumbnail image
+This page will allow users to browse a full list of events ordered by date.
+
+**Event Detail Page**
+This page is a detailed event display page that will show the user all of the information for the chosen event.
+
+Information Displayed:
+- Event Title
+- Event Decription
+- Date
+- Time
+- Location
+- Price
+
+The page also displays comments from users on the event as well as a form to leave a comment which is hidden and displayed on button click. This will allow users to discuss the event with others.
+
+A thumbs up icon will be displayed to allow the user to mark themselves as going and if they have marked going already, a thumbs down to mark not going.
+
+A total count will be available of all users marked going. This will allow the users to get a rough idea of how big the events may be.
+
+Icons are displayed to edit and delete the event to the users who own them. These will take you to the edit post or delete post pages and allow users full management of their own events.
 
 ## Technologies
 * [HTML](https://en.wikipedia.org/wiki/HTML)
