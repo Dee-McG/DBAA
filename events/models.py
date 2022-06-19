@@ -31,4 +31,7 @@ class EventNumbers(models.Model):
     Event model
     """
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    event = models.ForeignKey(Event, on_delete=models.CASCADE)
+    event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='event_numbers')
+
+    def __str__(self):
+        return self.event.title

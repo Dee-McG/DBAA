@@ -26,6 +26,12 @@
                 </div>
             </div>
         </div>
+        <div>
+        {% for event in events %}
+            {{event.event.title}}
+            <a href="{% url 'view_event' event.event.pk %}">Event</a>
+        {% endfor %}
+        </div>
     </div>
 </div>
 {% endblock %}
