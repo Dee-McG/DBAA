@@ -9,3 +9,40 @@
   width: 5rem;
   border-radius: 50%;
 }
+
+.input-width {
+  width: 25%
+}
+
+
+
+
+@media only screen and (max-width: 767px) {
+  .main-avatar-image {
+    height: 8rem;
+    width: 8rem;
+  }
+  
+  .input-width {
+    width: 35%;
+  }
+}
+
+@media only screen and (max-width: 586px) {
+  .main-avatar-image {
+    height: 10rem;
+    width: 10rem;
+
+  }
+}
+
+
+@media only screen and (max-width: 510px) {
+  .input-width {
+    width: 30%;
+    display: none !important;
+  }
+  .d-label {
+    display: block !important;
+  }
+}

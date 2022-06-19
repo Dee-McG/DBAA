@@ -3,7 +3,7 @@
 <div class="card-title fw-bolder text-center h5 mb-3"><i class="fa-solid fa-users me-2"></i>Friends</div>
     <div class="row">
         {% for friend in users_following %}
-        <div class=" col-12 col-lg-6">
+        <div class="col-12 col-lg-6">
             <div class="card">
                 <div class="row g-0">
                     <div class="col-4 py-2">
@@ -16,7 +16,7 @@
                     <div class="col-8">
                         <div class="card-body">
                             <h5 class="fs-5 fw-light">{{ friend.user.username }}</h5>
-                            <a role="button" href="{% url 'profile' friend.user.id %}" type="submit" class="btn btn-dark w-75">
+                            <a role="button" href="{% url 'profile' friend.user.id %}" type="submit" class="btn btn-dark w-100">
                                 View Profile
                             </a>
                         </div>
