@@ -96,7 +96,7 @@ class CommentEventView(LoginRequiredMixin, CreateView):
         self.success_url = f'/events/view/{pk}/'
         form.instance.event = Event.objects.get(id=self.kwargs['pk'])
         form.instance.user = self.request.user
-        messages.success(self.request, 'Successfully posted comment')
+        messages.success(self.request, 'Successfully commented on event')
         return super().form_valid(form)
 
 
