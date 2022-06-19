@@ -51,6 +51,7 @@ This page is a detailed event display page that will show the user all of the in
 
 Information Displayed:
 - Event Title
+- Event organiser and date / time posted
 - Event Decription
 - Date
 - Time
