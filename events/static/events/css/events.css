@@ -120,6 +120,11 @@ strong {
     display: none;
 }
 
+#search-form {
+    background-color: white;
+    border: none;
+}
+
 @media only screen and (min-width: 500px) {
     .thumb-img > img{
         display: flex;

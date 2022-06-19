@@ -1,6 +1,7 @@
 from django.views.generic import CreateView, DetailView, ListView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic.edit import FormMixin
+from django.contrib import messages
 from .models import Post, Reply
 from .forms import PostForm, ReplyForm
 
@@ -30,6 +31,7 @@ class CreatePostView(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.user = self.request.user
+        messages.success(self.request, 'Post created successfully')
         return super(CreatePostView, self).form_valid(form)
 
 
@@ -73,6 +75,7 @@ class EditPostView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def form_valid(self, form):
         # if form is valid return to discussion
         self.success_url = '/posts/view/' + str(self.object.did) + '/'
+        messages.success(self.request, 'Post updated successfully')
         return super().form_valid(form)
 
     def test_func(self):
@@ -88,6 +91,7 @@ class CreateReplyView(LoginRequiredMixin, CreateView):
         self.success_url = '/posts/view/' + str(Post.objects.get(pk=self.kwargs['pk']).did) + '/'
         form.instance.rid = Post.objects.get(pk=self.kwargs['pk'])
         form.instance.user = self.request.user
+        messages.success(self.request, 'Successfully replied to post')
         return super().form_valid(form)
 
 
@@ -103,6 +107,7 @@ class EditReplyView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def form_valid(self, form):
         # if form is valid return to post
         self.success_url = '/posts/view/' + str(self.object.rid) + '/'
+        messages.success(self.request, 'Reply successfully edited')
         return super().form_valid(form)
 
     def test_func(self):
