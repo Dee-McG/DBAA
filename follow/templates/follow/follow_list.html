@@ -17,16 +17,6 @@
         <div>
             <a onclick="history.back()" class="back-link"><i class="fa-solid fa-angle-left arrow"></i>Back</a>
         </div>
-
-        <div class="justify-content-end">
-            <form method='GET' id="search-form">
-                <input type='text' name='q' value='{{ request.GET.q }}' autocomplete="off" aria-label="Search Posts"
-                    placeholder="Search Posts">
-                <button class="btn p-0" type='submit' value="Search Posts">
-                    <i class="fas fa-search"></i>
-                </button>
-            </form>
-        </div>
     </div>
 
     <div class="mt-4">
