@@ -14,9 +14,9 @@
     <a onclick="history.back()" class="back-link"><i class="fa-solid fa-angle-left arrow"></i>Back</a>
 </div>
 
-<div class="container view-post mb-3">
+<div class="container d-flex justify-content-center flex-column mb-3">
     <!-- Post -->
-    <div class="post-con">
+    <div class="post-bor p-3 mt-2 d-flex flex-column">
         <h1 class="fs-4 text-center">{{post.title}}</h1>
 
         {% if request.user == post.user %}
@@ -47,41 +47,47 @@
 
         <p>{{post.body|safe}}</p>   
     </div>
-    <hr>
 
-    <!-- Replies -->
-    {% for reply in replies %}
-    <span class="sm-txt">
-        <a href="{% url 'profile' reply.user.id %}" class="user">
-            <strong>{{ reply.user }}</strong>
-        </a> replied on {{reply.time}}</span>
-    {% if reply.user == request.user or request.user == is_superuser %}
-    <span>
-        <!-- Delete reply -->
-        <a href="{% url 'delete_reply' reply.pk %}" class="delete" aria-label="Click to delete reply">
-            <i class="fa-solid fa-x"></i>
-        </a>
-    </span>
-    <!-- Edit post -->
-    <span class="m-2">
-        <a href="{% url 'edit_reply' reply.pk %}" class="delete" aria-label="Click to edit reply">
-            <i class="fa-solid fa-pen-to-square"></i>
-        </a>
-    </span>
+    <div class="p-2">
+        <!-- Replies -->
+        {% for reply in replies %}
+        <span class="sm-txt">
+            <a href="{% url 'profile' reply.user.id %}" class="user">
+                <strong>{{ reply.user }}</strong>
+            </a> replied on {{reply.time}}</span>
+        {% if reply.user == request.user or request.user == is_superuser %}
+        <span>
+            <!-- Delete reply -->
+            <a href="{% url 'delete_reply' reply.pk %}" class="delete" aria-label="Click to delete reply">
+                <i class="fa-solid fa-x"></i>
+            </a>
+        </span>
+        <!-- Edit post -->
+        <span class="m-2">
+            <a href="{% url 'edit_reply' reply.pk %}" class="delete" aria-label="Click to edit reply">
+                <i class="fa-solid fa-pen-to-square"></i>
+            </a>
+        </span>
 
-    {% endif %}
-    <p class="p-0 m-0">{{ reply.body|safe }}</p>
-    {% endfor %}
-    
-    <a class="btn btn-dark" onclick="toggleForm()">Reply</a>
+        {% endif %}
+        <p class="p-0 m-0">{{ reply.body|safe }}</p>
+        {% endfor %}
+        
+        <div class="w-25">
+            <a class="btn btn-dark" onclick="toggleForm()">Reply</a>
+        </div>
+    </div>
 
-    <form method="POST" action="{% url 'create_reply' post.did %}" id="reply" class="post-con mb-2 hide" enctype="multipart/form-data">
-        <h1 class="d-block text-center title">Reply to Discussion</h1>
-        {% csrf_token %}
-        {{ form|crispy }}
-        {{ form.media }}
-        <button type="submit" class="btn-dark">Submit</button>
-    </form>
+    <div id="reply" class="hide mt-3">
+        <form method="POST" action="{% url 'create_reply' post.did %}"
+            class="post-bor d-flex flex-column mb-2 p-3" enctype="multipart/form-data">
+            <h1 class="d-block text-center title">Reply to Discussion</h1>
+            {% csrf_token %}
+            {{ form|crispy }}
+            {{ form.media }}
+            <button type="submit" class="btn-dark">Submit</button>
+        </form>
+    </div>
     
 {% endfor %}
 
