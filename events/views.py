@@ -2,6 +2,7 @@ from django.http import HttpResponseRedirect
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic.edit import FormMixin
+from django.contrib import messages
 from django.db.models import Q
 from .models import Event, EventNumbers, CommentEvent
 from .forms import EventForm, EventCommentForm
@@ -41,6 +42,7 @@ class CreateEventView(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.user = self.request.user
+        messages.success(self.request, 'Event successfully created')
         return super(CreateEventView, self).form_valid(form)
 
 
@@ -58,11 +60,13 @@ class EventDetailView(LoginRequiredMixin, FormMixin, DetailView):
     
         if user:
             user.delete()
+            messages.success(self.request, 'Marked "not going')
         else:
             EventNumbers.objects.create(
                 user=self.request.user,
                 event=event,
             )
+            messages.success(self.request, 'Marked "going"')
 
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
         
@@ -92,6 +96,7 @@ class CommentEventView(LoginRequiredMixin, CreateView):
         self.success_url = f'/events/view/{pk}/'
         form.instance.event = Event.objects.get(id=self.kwargs['pk'])
         form.instance.user = self.request.user
+        messages.success(self.request, 'Successfully posted comment')
         return super().form_valid(form)
 
 
@@ -105,6 +110,7 @@ class EditEventView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def form_valid(self, form):
         self.success_url = "/events/events"
+        messages.success(self.request, 'Event successfully updated')
         return super().form_valid(form)
 
     def test_func(self):
