@@ -25,9 +25,8 @@
 }
 
 .post-bor {
-    border: .5px solid #bf9b9b;
-    border-radius: 2px;
-    background-color: #f3e775;
+    border: 1px solid #bf9b9b;
+    border-radius: 8px;
     display: flex;
     flex-direction: row;
 }
