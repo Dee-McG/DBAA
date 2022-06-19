@@ -4,6 +4,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic.edit import FormMixin
 from .models import Event, EventNumbers, CommentEvent
 from .forms import EventForm, EventCommentForm
+from datetime import date
+from django.db.models import Q
 
 
 class EventList(ListView):
@@ -16,7 +18,7 @@ class EventList(ListView):
     paginate_by = 6
     
     def get_queryset(self): 
-        events = Event.objects.order_by("-e_time")
+        events = Event.objects.filter(e_time__gt=date.today()).order_by("-e_time")
         return events
 
 
