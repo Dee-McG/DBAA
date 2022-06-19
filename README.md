@@ -102,8 +102,10 @@ There will also be a reply button that hides and shows the comment form to allow
     * JS was used to load the toasts and to create the Stripe payments. It was also used for the refresh/scroll functionalty on the chatrooms.
 * [Python](https://www.python.org/) 
     * This project was created using Python framework [Django](https://www.djangoproject.com/) following Model-View-Template design and 
-* [DJANGO](https://www.djangoproject.com/)
+* [Django](https://www.djangoproject.com/)
     * Python framework the application was built on
+* [CLOUNDINARY](https://cloudinary.com/)
+    * Cloudinary storage was used to user uploaded images
 
 ## Testing
 
@@ -153,17 +155,11 @@ The following commands were used for version control throughout the project:
 
 1. Click on the settings tab and then click reveal config vars.
 1. Variables added:<br>
-    * AWS_ACCESS_KEY_ID
-    * AWS_SECRET_ACCESS_KEY
     * DATABASE_URL
     * EMAIL_HOST_PASS
     * EMAIL_HOST_USER
     * SECRET_KEY
-    * STRIPE_PRICE_ID
-    * STRIPE_PUBLIC_KEY
-    * STRIPE_SECRET_KEY
-    * STRIPE_WH_SECRET
-    * USE_AWS
+    * CLOUNDINARY_URL
 
 **Enable automatic deployment:**
 1. Click the Deploy tab
