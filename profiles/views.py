@@ -14,7 +14,7 @@ from events.models import EventNumbers
 class UserProfileView(LoginRequiredMixin, DetailView):
     """View to show user profile"""
 
-    template_name = 'profiles/profile.html'
+    template_name = "profiles/profile.html"
     model = UserProfile
 
     def post(self, request, pk):
@@ -32,7 +32,7 @@ class UserProfileView(LoginRequiredMixin, DetailView):
                 following=follower
             )
 
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+        return HttpResponseRedirect(request.META.get("HTTP_REFERER"))
 
     def get(self, request, pk):
         # logged in user
@@ -47,41 +47,98 @@ class UserProfileView(LoginRequiredMixin, DetailView):
         # Iterate over users to get user_profiles
         follow_lst = UserProfile.objects.filter(id=0)
         for usr in users_following:
-            follow_lst = follow_lst | UserProfile.objects.filter(id=usr.following.id)
+            follow_lst = follow_lst | UserProfile.objects.filter(
+                id=usr.following.id)
         # used to check if already following the user you're viewing
         following = Follow.objects.filter(
             user=user, following=profile_user)
 
-        events = EventNumbers.objects.filter(user=profile_user)
-        print(events)
-        for ev in events:
-            print(ev.event)
+        profile_url = f"/profile/{pk}/"
 
         context = {
-            'user_id': pk,
-            'user': user,
-            'user_str': str(user),
-            'following': following,
-            'users_following': follow_lst,
-            'user_profile': user_profile,
-            'user_profile_str': str(user_profile),
-            'events': events
+            "user_id": pk,
+            "user": user,
+            "user_str": str(user),
+            "following": following,
+            "users_following": follow_lst,
+            "user_profile": user_profile,
+            "user_profile_str": str(user_profile),
+            "profile_url": profile_url
         }
 
         return render(request, self.template_name, context)
 
 
-class UserDetailView(LoginRequiredMixin, DetailView):
+class UserDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
     """View to show user profile"""
 
-    template_name = 'profiles/personal_details.html'
+    template_name = "profiles/personal_details.html"
     model = UserProfile
 
     def get(self, request, pk):
-        user = get_object_or_404(self.model, user=self.request.user)
+        user_profile = get_object_or_404(self.model, user=self.request.user)
+        details_url = f"/profile/details/{pk}/"
+
         context = {
-            'user': user,
-            'details': user,
+            "user_profile": user_profile,
+            "details_url": details_url,
+        }
+
+        return render(request, self.template_name, context)
+
+    def test_func(self):
+        return self.request.user == self.get_object().user
+
+
+class UserEventView(LoginRequiredMixin, DetailView):
+    """
+    A view to show user's events they are attending and show 
+    event's friends of other user's are attending
+    """
+
+    template_name = "profiles/view_profile_events.html"
+    model = UserProfile
+
+    def post(self, request, pk):
+        """Function to toggle follow on and off"""
+        follower = get_object_or_404(User, id=pk)
+        user_profile = get_object_or_404(User, id=self.request.user.id)
+        already_following = Follow.objects.filter(
+            user=user_profile, following=follower)
+
+        if already_following:
+            already_following.delete()
+        else:
+            Follow.objects.create(
+                user=user_profile,
+                following=follower
+            )
+
+        return HttpResponseRedirect(request.META.get("HTTP_REFERER"))
+
+    def get(self, request, pk):
+        # logged in user
+        user = get_object_or_404(User, id=self.request.user.id)
+        # user profile (who's profile you're viewing)
+        user_profile = get_object_or_404(self.model, user=pk)
+        # user object of who's profile you're viewing
+        profile_user = get_object_or_404(User, id=pk)
+
+        following = Follow.objects.filter(
+            user=user, following=profile_user)
+
+        events = EventNumbers.objects.filter(user=profile_user)
+        events_url = f"/profile/view-events/{pk}/"
+
+        context = {
+            "user_id": pk,
+            "user": user,
+            "user_str": str(user),
+            "user_profile": user_profile,
+            "user_profile_str": str(user_profile),
+            "following": following,
+            "events": events,
+            "events_url": events_url
         }
 
         return render(request, self.template_name, context)
@@ -91,23 +148,26 @@ class EditAvatarView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     """Update user avatar"""
 
     form_class = UserAvatarForm
-    template_name = 'profiles/edit_avatar.html'
+    template_name = "profiles/edit_avatar.html"
     model = UserProfile
 
     def form_valid(self, form):
         # if form is valid return profile
-        self.success_url = f'/profile/{self.request.user.id}/'
+        self.success_url = f"/profile/{self.request.user.id}/"
         return super().form_valid(form)
 
     def test_func(self):
         return self.request.user == self.get_object().user
 
     def get_context_data(self):
-        user = get_object_or_404(self.model, user=self.request.user)
+        user_profile = get_object_or_404(self.model, user=self.request.user)
+        pk = self.request.user.id
+        edit_avatar_url = f"/profile/edit-avatar/{pk}/"
 
         context = {
-            'user': user,
-            'form': UserAvatarForm(instance=user)
+            "user_profile": user_profile,
+            "form": UserAvatarForm(instance=user_profile),
+            "edit_avatar_url": edit_avatar_url
         }
 
         return context
@@ -117,24 +177,27 @@ class EditDetailsView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     """Update user avatar"""
 
     form_class = UserDetailForm
-    template_name = 'profiles/edit_details.html'
+    template_name = "profiles/edit_details.html"
     model = User
 
     def form_valid(self, form):
         # if form is valid return profile
-        self.success_url = f'/profile/details/{self.request.user.id}/'
+        self.success_url = f"/profile/details/{self.request.user.id}/"
         return super().form_valid(form)
 
     def test_func(self):
         return self.request.user.username == self.get_object().username
 
     def get_context_data(self):
-        user = get_object_or_404(UserProfile, id=self.request.user.id)
+        user_profile = get_object_or_404(UserProfile, id=self.request.user.id)
         data = get_object_or_404(self.model, id=self.request.user.id)
+        pk = self.request.user.id
+        edit_details_url = f"/profile/edit-details/{pk}/"
 
         context = {
-            'user': user,
-            'form': UserDetailForm(instance=data)
+            "user_profile": user_profile,
+            "form": UserDetailForm(instance=data),
+            "edit_details_url": edit_details_url
         }
 
         return context

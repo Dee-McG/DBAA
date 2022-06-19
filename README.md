@@ -19,11 +19,79 @@
 
 ## Introduction
 
+Welcome to DBAA
+
+This project was created for the Code Institute Pride hackathon. It is a social networking and events platform for LGBTQ+ users to advertise events and connect with other users.
+
 ## Wireframes
 
 ## Database Design
 
 ## Features
+
+**Home Page**
+
+The home page contains: 
+- Hero Image
+- An introduction to the website for users to understand what the website is about. 
+- A featured event - This will show the most popular event
+- The next six upcoming events so users can see the next events scheduled by closest to current date
+This page is not visible when logged in.
+
+**Event List Page**
+
+This page has a list of all upcoming events that are greater than today, it displays the following information:
+- Title
+- Created by (username & date time)
+- Thumbnail image
+
+This page will allow users to browse a full list of events ordered by date.
+
+**Event Detail Page**
+
+This page is a detailed event display page that will show the user all of the information for the chosen event.
+
+Information Displayed:
+- Event Title
+- Event organiser and date / time posted
+- Event Decription
+- Date
+- Time
+- Location
+- Price
+
+The page also displays comments from users on the event as well as a form to leave a comment which is hidden and displayed on button click. This will allow users to discuss the event with others.
+
+A thumbs up icon will be displayed to allow the user to mark themselves as going and if they have marked going already, a thumbs down to mark not going.
+
+A total count will be available of all users marked going. This will allow the users to get a rough idea of how big the events may be.
+
+Icons are displayed to edit and delete the event to the users who own them. These will take you to the edit post or delete post pages and allow users full management of their own events.
+
+**Discusions List Page**
+
+This page has a list of all created posts in order of newest posted, it displays the following information:
+- Title
+- Created by (username & date time)
+- Thumbnail image
+
+This page will allow users to browse a full list of posts and can click in to ones that interest them to see the full details. 
+If you click the username of the poster from the list, it will link you to their profile page.
+
+**Discussion Detail Page**
+
+This page will show more detailed information on the discussion. Information shown:
+
+- Title
+- Post contents
+- Date and time posted
+- Edit and delete buttons for the author
+- Comments on the post
+- Edit and delete buttons on comments
+
+This will allow the author to have full control over the post and commenters control on their comments. Clicking the edit or delete buttons will take you to the respective edit and delete pages.
+
+There will also be a reply button that hides and shows the comment form to allow users to comment on the post.
 
 ## Technologies
 * [HTML](https://en.wikipedia.org/wiki/HTML)
@@ -34,8 +102,10 @@
     * JS was used to load the toasts and to create the Stripe payments. It was also used for the refresh/scroll functionalty on the chatrooms.
 * [Python](https://www.python.org/) 
     * This project was created using Python framework [Django](https://www.djangoproject.com/) following Model-View-Template design and 
-* [DJANGO](https://www.djangoproject.com/)
+* [Django](https://www.djangoproject.com/)
     * Python framework the application was built on
+* [CLOUNDINARY](https://cloudinary.com/)
+    * Cloudinary storage was used to user uploaded images
 
 ## Testing
 
@@ -85,17 +155,11 @@ The following commands were used for version control throughout the project:
 
 1. Click on the settings tab and then click reveal config vars.
 1. Variables added:<br>
-    * AWS_ACCESS_KEY_ID
-    * AWS_SECRET_ACCESS_KEY
     * DATABASE_URL
     * EMAIL_HOST_PASS
     * EMAIL_HOST_USER
     * SECRET_KEY
-    * STRIPE_PRICE_ID
-    * STRIPE_PUBLIC_KEY
-    * STRIPE_SECRET_KEY
-    * STRIPE_WH_SECRET
-    * USE_AWS
+    * CLOUNDINARY_URL
 
 **Enable automatic deployment:**
 1. Click the Deploy tab

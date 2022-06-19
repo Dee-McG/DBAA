@@ -12,10 +12,10 @@
         <h1>My Profile</h1>
     </div>
     <div class="row">
-        <div class="col-4 border border-1">
+        <div class="col-12 col-sm-4 border border-1">
             {% include 'profiles/includes/profile_card.html'%}
         </div>
-        <div class="col-8 border border-1">
+        <div class="col border border-1">
             <div class="card m-3 border-0">
                 <div class="card-body">
                     <div class="card-title fw-bolder text-center h5 mb-3">
@@ -24,21 +24,25 @@
                     </div>
                 </div>
                 <div class="card-body">
+                    <div class="form-label mb-2 d-none d-label">Username</div>
                     <div class="input-group mb-3">
-                        <span class="input-group-text w-25">Username</span>
-                        <span aria-label="First name" class="form-control">{{ details.user.username }}</span>
+                        <span class="input-group-text input-width">Username</span>
+                        <span aria-label="First name" class="form-control">{{ user_profile.user.username }}</span>
                     </div>
+                    <div class="form-label mb-2 d-none d-label">First name</div>
                     <div class="input-group mb-3">
-                        <span class="input-group-text w-25">First name</span>
-                        <span aria-label="First name" class="form-control">{{ details.user.first_name }}</span>
+                        <span class="input-group-text input-width">First name</span>
+                        <span aria-label="First name" class="form-control">{{ user_profile.user.first_name }}</span>
                     </div>
+                    <div class="form-label mb-2 d-none d-label">Last name</div>
                     <div class="input-group mb-3">
-                        <span class="input-group-text w-25">Last name</span>
-                        <span aria-label="First name" class="form-control">{{ details.user.last_name }}</span>
+                        <span class="input-group-text input-width">Last name</span>
+                        <span aria-label="First name" class="form-control">{{ user_profile.user.last_name }}</span>
                     </div>
+                    <div class="form-label mb-2 d-none d-label">Last name</div>
                     <div class="input-group mb-3">
-                        <span class="input-group-text w-25">Email</span>
-                        <span aria-label="First name" class="form-control">{{ details.user.email }}</span>
+                        <span class="input-group-text input-width">Email</span>
+                        <span aria-label="First name" class="form-control">{{ user_profile.user.email }}</span>
                     </div>
                 </div>
             </div>
