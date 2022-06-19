@@ -33,7 +33,9 @@
 
         <span class="sm-txt d-block text-center">Created By: <strong>{{event.user}}</strong> on
             {{event.date}}</span>
-            <span class="text-center d-block"><strong>Location: {{event.location}}</strong></span>
+        <span class="text-center d-block"><strong>Location: {{event.location}}</strong></span>
+        <span class="text-center d-block"><strong>Event Date: {{event.e_time.date}}</strong></span>
+        <span class="text-center d-block"><strong>Event Time: {{event.e_time.time}}</strong></span>
         {% if event.image.url is not none %}
         <div class="d-block w-100 text-center">
             <img class="post-img" src="{{event.image.url}}">
