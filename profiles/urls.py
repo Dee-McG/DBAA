@@ -3,6 +3,7 @@ from .views import (
     EditAvatarView,
     EditDetailsView,
     UserDetailView,
+    UserEventView,
     UserProfileView
 )
 
@@ -13,4 +14,6 @@ urlpatterns = [
          EditAvatarView.as_view(), name="edit_avatar"),
     path('edit-details/<slug:pk>/',
          EditDetailsView.as_view(), name="edit_details"),
+    path('view-events/<slug:pk>/', UserEventView.as_view(),
+         name="view_profile_events")
 ]

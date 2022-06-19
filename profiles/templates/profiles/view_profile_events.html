@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+{{ block.super }}
+    <link rel="stylesheet" href="{% static 'profiles/css/profiles.css' %}">
+{% endblock %}
+
+
+{% comment %} {% for event in events %}
+    {{event.event.title}}
+    <a href="{% url 'view_event' event.event.pk %}">Event</a>
+{% endfor %} {% endcomment %}
+{% block content %}
+<div class="container">
+    <div class="text-center my-3">
+        {% if user_profile_str == user_str %}
+        <h1>My Profile</h1>
+        {% else %}
+        <h1>{{ user_profile }}</h1>
+        {% endif %}
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-4 border border-1">
+            {% include 'profiles/includes/profile_card.html'%}
+        </div>
+        <div class="col border border-1">
+            <div class="card m-3 border-0">
+                <div class="card-body p-2">
+                    <div class="card-title fw-bolder text-center h5 mb-3"><i class="fa-solid fa-calendar-check me-2"></i>Events: Going</div>
+                        <div class="card-group">
+                            {% for event in events %}
+                            <a href="{% url 'view_event' event.event.pk %}" class="text-decoration-none text-black p-2 col-12 col-md-6">
+                                <div class="card card-height">
+                                    <div class="event-image-container">
+                                        {% if event.event.image %}
+                                        <img src="{{ event.event.image.url }}" class="card-img-top event-image" alt="{{ event.event.title }}">
+                                        {% else %}
+                                        <img src="https://res.cloudinary.com/datonex/image/upload/v1655651227/noimage_kvqqf9.png" class="card-img-top event-image" alt="{{ event.event.title }}">
+                                        {% endif %}
+                                    </div>
+                                    <div class="card-body events">
+                                        <h5 class="card-title">{{ event.event.title }}</h5>
+                                        <p class="card-text"><i class="fa-solid fa-calendar-day me-2 purple"></i>{{ event.event.date.date }}</p>
+                                        <p class="card-text"><i class="fa-solid fa-clock me-2 purple"></i>{{ event.event.e_time.time }}</small></p>
+                                        <p class="card-text"><i class="fa-solid fa-location-dot me-2 purple"></i>{{ event.event.location }}</small></p>
+                                        <p class="card-text"><i class="fa-solid fa-money-bill me-2 purple"></i>£ {{ event.event.fee }}</p>
+                                    </div>
+                                </div>
+                            </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
