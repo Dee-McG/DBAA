@@ -10,11 +10,16 @@ class IndexView(ListView):
     model = Event
 
     def get_context_data(self, **kwargs):
+        """ 
+        Returns event with highest people marked 'going'
+        and the next 6 upcoming events
+        """
+        events = EventNumbers.objects.values('event').annotate(total_count=Count('event'))[:1]
 
-        events = EventNumbers.objects.values('user').order_by().annotate(event=Count('event'))[:1]
         featured = Event.objects.filter()
         for event in events:
             featured = Event.objects.filter(id=event['event'])
+        
         next_events = Event.objects.all()[:6]
 
         context = {
