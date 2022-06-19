@@ -40,9 +40,13 @@ class UserProfileView(LoginRequiredMixin, DetailView):
         user_profile = get_object_or_404(self.model, user=pk)
         # user object of whos profile you're viewing
         profile_user = get_object_or_404(User, id=pk)
-        # list of users you're following
+        # list of follow objects of users you're following
         users_following = Follow.objects.filter(
             user=profile_user)
+        # Iterate over users to get user_profiles
+        follow_lst = UserProfile.objects.filter(id=0)
+        for usr in users_following:
+            follow_lst = follow_lst | UserProfile.objects.filter(id=usr.following.id)
         # used to check if already following the user you're viewing
         following = Follow.objects.filter(
             user=user, following=profile_user)
@@ -52,7 +56,7 @@ class UserProfileView(LoginRequiredMixin, DetailView):
             'user': user,
             'user_str': str(user),
             'following': following,
-            'users_following': users_following,
+            'users_following': follow_lst,
             'user_profile': user_profile,
             'user_profile_str': str(user_profile)
         }
