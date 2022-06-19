@@ -1,6 +1,6 @@
 from django import forms
 from djrichtextfield.widgets import RichTextWidget
-from .models import Event
+from .models import Event, CommentEvent
 from .widget import DatePickerInput
 
 
@@ -29,3 +29,15 @@ class EventForm(forms.ModelForm):
                 "type": "datetime-local"
             })
         }
+
+
+class EventCommentForm (forms.ModelForm):
+
+    class Meta:
+        model = CommentEvent
+        # specify fields
+        fields = ['body']
+        labels = {
+            'body': 'Comment',
+        }
+        comment = forms.CharField(widget=RichTextWidget())

@@ -58,6 +58,44 @@
     {% else %}
     <a class="btn btn-outline-info" href="{% url 'account_login' %}">Log in to use the going to the event button!</a><br>
     {% endif %}
+
+    <div class="d-block">
+    {% for comment in comments %}
+    <span class="sm-txt">
+        <a href="{% url 'profile' comment.user.id %}" class="user">
+            <strong>{{ comment.user }}</strong></a> commented on {{ comment.time }}
+    </span>
+    <p class="p-0 m-0">{{ comment.body|safe }}</p>
+    {% endfor %}
+    </div>
+
+    <div class="d-block">
+        <a class="btn btn-dark" onclick="toggleForm()">Comment</a>
+
+        <form method="POST" action="{% url 'comment_event' event.id %}" id="comment" class="post-con mb-2 hide" enctype="multipart/form-data">
+            <h1 class="d-block text-center title">Comment on {{event.title}}</h1>
+            {% csrf_token %}
+            {{ form|crispy }}
+            {{ form.media }}
+            <button type="submit" class="btn-dark">Submit</button>
+        </form>
+    </div>
 </div>
 </div>
+{% endblock %}
+
+
+{% block javascript %}
+<script>
+    function toggleForm() {
+        // Toggle hide class on form
+        form = document.getElementById('comment');
+        form.classList.toggle("hide");
+
+        // scroll to bottom of page where reply form sits
+        if (!form.classList.contains('hide')){
+            window.scrollTo(0,document.body.scrollHeight);
+        }
+    }
+</script>
 {% endblock %}
