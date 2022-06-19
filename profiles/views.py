@@ -35,10 +35,10 @@ class UserProfileView(LoginRequiredMixin, DetailView):
 
     def get(self, request, pk):
         user_profile = get_object_or_404(User, id=self.request.user.id)
-        follower = get_object_or_404(User, id=pk)
         user = get_object_or_404(self.model, user=pk)
+        users_following = get_object_or_404(User, id=pk)
         following = Follow.objects.filter(
-            user=user_profile, following=follower)
+            user=users_following)
 
         context = {
             'user_id': pk,
