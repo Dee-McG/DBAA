@@ -39,6 +39,7 @@
                     <button type="submit" class="btn btn-primary w-100">Follow</button>
                 {% endif %}
             </form>
+            <a href="{% url 'profile' user_profile.user.id %}" class="btn {% if request.path == profile_url %} btn-primary {% else %} btn-outline-primary {% endif %}" role="button">Friends</a>
             <a href="{% url 'view_profile_events' user_profile.user.id %}" class="btn {% if request.path == events_url %} btn-primary {% else %} btn-outline-primary {% endif %}" role="button">Events</a>
         </div>
         {% endif %}
