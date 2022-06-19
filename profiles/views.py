@@ -196,7 +196,7 @@ class EditDetailsView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def get_context_data(self):
         user_profile = get_object_or_404(UserProfile, id=self.request.user.id)
         data = get_object_or_404(self.model, id=self.request.user.id)
-        pk = self.request.user.id
+        pk = user_profile.user.id
         edit_details_url = f"/profile/edit-details/{pk}/"
 
         context = {
