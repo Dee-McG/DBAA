@@ -3,9 +3,9 @@
 
 ## Table of Contents
 * [Introduction](#Introduction)
+* [Features](#Features)
 * [Wireframes](#Wireframes)
 * [Database Design](#Database-Design)
-* [Features](#Features)
 * [Technologies](#Technologies)
 * [Testing](#Testing)
 * [Deployment](#Deployment)
@@ -22,10 +22,6 @@
 Welcome to DBAA
 
 This project was created for the Code Institute Pride hackathon. It is a social networking and events platform for LGBTQ+ users to advertise events and connect with other users.
-
-## Wireframes
-
-## Database Design
 
 ## Features
 
@@ -92,6 +88,13 @@ This page will show more detailed information on the discussion. Information sho
 This will allow the author to have full control over the post and commenters control on their comments. Clicking the edit or delete buttons will take you to the respective edit and delete pages.
 
 There will also be a reply button that hides and shows the comment form to allow users to comment on the post.
+
+## Wireframes
+
+## Database Design
+
+![ER Diagram](docs/readme_images/er_diagram.JPG)
+
 
 ## Technologies
 * [HTML](https://en.wikipedia.org/wiki/HTML)
