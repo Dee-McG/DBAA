@@ -1,7 +1,10 @@
 from django.views.generic import CreateView, DetailView, ListView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic.edit import FormMixin
+from django.contrib.auth.models import User
 from django.contrib import messages
+from django.db.models import Q
+
 from .models import Post, Reply
 from .forms import PostForm, ReplyForm
 
@@ -15,9 +18,18 @@ class PostsView(ListView):
     context_object_name = 'posts'
 
     def get_queryset(self):
-        """ Return queryset by newest first """
-        order_newest = Post.objects.order_by('-time')
-        return order_newest
+        """ Query to filter posts or return all"""
+        query = self.request.GET.get('q')
+        users = User.objects.filter(username=query)
+        if query:
+            posts = self.model.objects.filter(
+                Q(title__icontains=query) |
+                Q(body__icontains=query) |
+                Q(user__in=users)
+            )
+        else: 
+            posts = Post.objects.order_by('-time')
+        return posts
 
 
 class CreatePostView(LoginRequiredMixin, CreateView):

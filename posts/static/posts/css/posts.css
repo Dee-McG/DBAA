@@ -25,17 +25,12 @@
 }
 
 .post-bor {
-    border: .5px solid #bf9b9b;
-    border-radius: 2px;
-    background-color: #f3e775;
+    border: 1px solid #bf9b9b;
+    border-radius: 8px;
     display: flex;
     flex-direction: row;
+    overflow: hidden;
 }
-
-.post-bor:last-of-type {
-    border-bottom: .5px solid #bf9b9b;
-    border-radius: 2px;
-  }
 
 .post-container {
     border-radius: 5px;
