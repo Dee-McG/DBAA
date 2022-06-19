@@ -1,24 +1,29 @@
 {% load static %}
-<div class="d-flex flex-wrap justify-content-between">
-    <div class="card-title fw-bolder text-center h5 mb-3 w-100"><i class="fa-solid fa-users me-2"></i>Friends</div>
-    {% for friend in users_following %}
-        <div class="card card-width mt-2">
-            <div class="col-sm-12 col-md-4 d-flex justify-content-center align-items-center">
-                <!-- if user has avatar -->
-                {% if friend.avatar.url is not none %}
-                <img src="{{ friend.avatar.url }}" class="card-img-top mx-auto main-avatar-image" alt="default avatar image of rainbow coloured butterfly">
-                {% else %}
-                <!-- if user has no avatar -->
-                <img src="{% static 'profiles/images/default-avatar.png' %}" class="img-fluid d-flex justify-content-center align-items-center following-avatar-image" alt="default avatar image of rainbow coloured butterfly">
-                {% endif %}
-            </div>
-            
-            <div class="col-sm-12 col-md-8">
-                <div class="card-body d-flex flex-column justify-content-center align-items-center h-100">
-                    <h5 class="fs-5 fw-light text-center">{{ friend.user.username }}</h5>
-                    <button class="btn btn-primary btn-dark">Unfollow</button>
+
+<div class="card-title fw-bolder text-center h5 mb-3"><i class="fa-solid fa-users me-2"></i>Friends</div>
+    <div class="row">
+        {% for friend in users_following %}
+        <div class=" col-12 col-lg-6">
+            <div class="card">
+                <div class="row g-0">
+                    <div class="col-4 py-2">
+                        {% if friend.avatar.url is not none %}
+                        <img src="{{ friend.avatar.url }}" class="img-fluid d-flex justify-content-center align-items-center mx-auto following-avatar-image" alt="default avatar image of rainbow coloured butterfly">
+                        {% else %}
+                        <img src="{% static 'profiles/images/default-avatar.png' %}" class="img-fluid d-flex justify-content-center align-items-center mx-auto following-avatar-image" alt="default avatar image of rainbow coloured butterfly">
+                        {% endif %}
+                    </div>
+                    <div class="col-8">
+                        <div class="card-body">
+                            <h5 class="fs-5 fw-light">{{ friend.user.username }}</h5>
+                            <a role="button" href="{% url 'profile' friend.user.id %}" type="submit" class="btn btn-dark w-75">
+                                View Profile
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    {% endfor %}
+        {% endfor %}
+    </div>
 </div>
