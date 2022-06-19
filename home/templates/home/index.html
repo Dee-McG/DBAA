@@ -10,18 +10,18 @@
 
 <section class="main-header">
     <div class="main-titles">
-        <h1>Ikonic Events</h1>
+        <h1>DBAA</h1>
         <h2 class="title-cta">The Best LGBTQ+ Live Events</h2>
     </div>
 </section>
 
 <section class="welcome">
     <div class="welcome-text">
-        <h2 class="welcome-title">Welcome to Ikonic Events</h2>
-        <p class="welcome-queens"><strong>Well Hey There Queens!</strong></p>
+        <h2 class="welcome-title">Welcome to DBAA</h2>
+        <p class="welcome-queens"><strong>Well Hey There Good Looking!</strong></p>
         <p>
-        Welcome to Ikonic Events! This is a shared community forum for anyone interested in LGBTQIA+ events and spilling the tea.<br>
-        There is only one rule here - Don't be an <strong>a**hole.</strong> This is a supportive and welcoming community, so lets keep it fabulous.<br>
+        Welcome to DBAA! This is a shared community forum for anyone interested in LGBTQIA+ events and spilling the tea.<br>
+        There is only one rule here - <strong>Don't be an a**hole.</strong> This is a supportive and welcoming community, so lets keep it fabulous.<br>
         On our site you can see the latest events across the UK and internationally. Make sure you register so you can post your own local events! You can also start a discussion with other members on our community forum. You betta NetWerk!<br>
         Love is love, so don't forget to share some with our team on the social media links at the bottom of the page! Yass queen!</p>
     </div>
@@ -33,26 +33,33 @@
 <div class="section-divider"></div>
 
 <section class="featured-event">
-    <div class="featured-event-image">
-        <img src="{% static '/images/ministry-of-pride.jpeg' %}" alt="Offical poster for ministry of pride with acts list and neon colours." class="ministry-of-pride-image">
+    <div class="featured-event-title-div">
+        <h2 class="featured-event-title">Featured Event</h2>
     </div>
+    {% for feature in featured %}
+    <div class="featured-event-image">
+        {% if feature.image.url is not none %}
+        <img src="{{feature.image.url}}" alt="Offical poster for Madonna fan party with a headshot of Madonna with glasses" class="featured-event-img">
+        {% endif %}
+    </div>
+    
     <div class="featured-event-info">
-        <h2 class="event-title">Featured Event</h2>
-        <h3>Ministry of Pride Day</h3>
+        <h3 class="featured-event-info-title">{{feature.title}}</h3>
         <div class="featured-event-details">
-            <div class="featured-event-details-row-1">
-                <p class="featured-event-date"><i class="fa-solid fa-calendar-day"></i> Saturday 2nd July 2022</p>
-                <p class="featured-event-time"><i class="fa-solid fa-clock" id="featured-fa-time"></i> 2pm - 10pm</p>
+            <p class="featured-event-date"><i class="fa-solid fa-calendar-day"></i> {{feature.e_time.date}}</p>
+            <p class="featured-event-time"><i class="fa-solid fa-clock" id="featured-fa-time"></i> {{feature.e_time.time}}</p>
+            <div class="featured-event-location-div">
+                <i class="fa-solid fa-location-dot" id="featured-fa-location"></i><p class="featured-event-location"> {{feature.location}}</p>
             </div>
-            <div class="featured-event-details-row-2">
-                <p class="featured-event-location"><i class="fa-solid fa-location-dot" id="featured-fa-location"></i> Ministry of Sound, 103 Gaunt St, London</p>
-                <p class="featured-event-price"><i class="fa-solid fa-money-bill" id="featured-fa-money"></i> £15 - £50</p>
+            <p class="featured-event-price"><i class="fa-solid fa-money-bill" id="featured-fa-money"></i> £{{feature.fee}}</p>
+            <p>{{feature.body|safe}}</p>
+            <div class="featured-event-details-button-div">
+                <a href="{% url 'view_event' feature.id %}"><button class="featured-events-more-details-button">More Details</button></a>
             </div>
         </div>
-        <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-        </p>
+        
     </div>
+    {% endfor %}
 </section>
 
 <div class="section-divider"></div>
@@ -64,7 +71,9 @@
     <div class="upcoming-events-listings">
         {% for event in next_events %}
         <div class="upcoming-events-listing">
+            {% if event.image.url is not none %}
             <div class="upcoming-event-image-div"><img src="{{event.image.url}}" alt="Event image" class="upcoming-event-image"></div>
+            {% endif %}
             <h3 class="upcoming-events-listing-title">{{event.title}}</h3>
             <div class="upcoming-event-details-div">
                 <p class="upcoming-event-date"><i class="fa-solid fa-calendar-day"></i> {{event.e_time.date}}</p>
