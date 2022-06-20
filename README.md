@@ -129,6 +129,10 @@ Features when viewing another users profile:
 
 ## Wireframes
 
+**Home Page**
+
+![Home page](docs/readme_images/balsamiq-home-page.png)
+
 **User Profile Page**
 
 Logged in user profile page will show their list of friends
