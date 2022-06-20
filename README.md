@@ -1,4 +1,4 @@
-# IKONIC EVENTS
+# DBAA
 
 
 ## Table of Contents
@@ -133,6 +133,12 @@ Features when viewing another users profile:
     * Cloudinary storage was used to user uploaded images
 
 ## Testing
+
+## Known Bugs
+
+Validation fails on pages that CK editor is used for the rich text formatting, it is coming from the rendered html code within which we have no control over.
+
+Avatar does not load on the users profile while looking at the allauth change password card on that page.
 
 ### Test Results
 
