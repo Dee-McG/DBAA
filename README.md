@@ -1,5 +1,7 @@
 # DBAA
 
+![mockup](docs/readme_images/mockup.JPG)
+
 
 ## Table of Contents
 * [Introduction](#Introduction)
