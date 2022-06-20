@@ -13,7 +13,7 @@
 
 <div class="container d-flex justify-content-center flex-column mb-3 mt-3">
     <!-- FORM -->
-    <form method="POST" action="{% url 'edit_post' post.did %}" class="form post-con w-100 mb-2" enctype="multipart/form-data">
+    <form method="POST" action="{% url 'edit_post' post.did %}" class="form post-con border-0 shadow w-100 mb-2" enctype="multipart/form-data">
         <h1 class="d-block text-center title">Edit A Discussion</h1>
         {% csrf_token %}
         {{ form|crispy }}
@@ -23,7 +23,7 @@
         </div>
     </form>
     <!-- POST -->
-    <div class="post-con w-100">
+    <div class="post-con border-0 shadow w-100">
         <h1 class="fs-4 text-center">{{post.title}}</h1>
         <span class="sm-txt d-block text-center">Posted By: <strong>{{post.user}}</strong> on
             {{post.time}}</span>

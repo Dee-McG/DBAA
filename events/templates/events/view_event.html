@@ -13,7 +13,7 @@
 
 <div class="container d-flex justify-content-center flex-column mb-3">
     <!-- Event -->
-    <div class="post-bor p-3 mt-2 d-flex flex-column">
+    <div class="post-bor border-0 shadow p-3 my-2 d-flex flex-column">
         <h1 class="fs-4 text-center">{{event.title}}</h1>
 
         {% if request.user == event.user %}
@@ -74,7 +74,7 @@
     <div class="d-block">
         <a class="btn btn-dark mt-2" onclick="toggleForm()">Comment</a>
 
-        <form method="POST" action="{% url 'comment_event' event.id %}" id="comment" class="post-con mb-2 hide" enctype="multipart/form-data">
+        <form method="POST" action="{% url 'comment_event' event.id %}" id="comment" class="post-con border-0 shadow mb-2 hide" enctype="multipart/form-data">
             <div class="text-center"><strong>Commenting on:</strong></div>
             <p class="d-block text-center fs-4 title">Comment on {{event.title}}</p>
             {% csrf_token %}

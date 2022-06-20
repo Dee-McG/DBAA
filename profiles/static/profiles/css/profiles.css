@@ -1,3 +1,7 @@
+main {
+  background-color: whitesmoke;
+}
+
 .main-avatar-image {
   height: 10rem;
   width: 10rem;
@@ -25,6 +29,14 @@
 
 .purple {
   color: #86007D !important;
+}
+
+div.card {
+  border: 1px solid #bf9b9b;
+}
+
+.white-bg {
+  background-color: white;
 }
 
 @media only screen and (max-width: 767px) {
