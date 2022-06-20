@@ -29,13 +29,13 @@
         </div>
     </div>
 
-    <div class="mt-4">
+    <div class="mt-4 mb-5 p-4 bg-white shadow">
         <div class="d-flex flex-row justify-content-end">
             <a href="{% url 'create_event' %}">Create an Event</a>
         </div>
 
         {% for event in events %}
-        <div class="post-bor mt-2">
+        <div class="post-bor border-0 shadow my-3">
             <div class="thumb-img">
             {% if event.image.url is not none %}
                 <img class="thumbnail" src="{{event.image.url}}">
