@@ -20,18 +20,18 @@
         <h1>{{ user_profile }}</h1>
         {% endif %}
     </div>
-    <div class="row">
-        <div class="col-12 col-md-4 border border-1">
+    <div class="row bg-white shadow mb-5">
+        <div class="col-12 col-md-4 ">
             {% include 'profiles/includes/profile_card.html'%}
         </div>
-        <div class="col border border-1">
+        <div class="col">
             <div class="card m-3 border-0">
                 <div class="card-body p-2">
                     <div class="card-title fw-bolder text-center h5 mb-3"><i class="fa-solid fa-calendar-check me-2"></i>Events: Going</div>
                         <div class="card-group">
                             {% for event in events %}
                             <a href="{% url 'view_event' event.event.pk %}" class="text-decoration-none text-black p-2 col-12 col-md-6">
-                                <div class="card card-height">
+                                <div class="card card-height border-0 shadow">
                                     <div class="event-image-container">
                                         {% if event.event.image %}
                                         <img src="{{ event.event.image.url }}" class="card-img-top event-image" alt="{{ event.event.title }}">

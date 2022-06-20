@@ -16,7 +16,7 @@
 
 <div class="container d-flex justify-content-center flex-column mb-3">
     <!-- Post -->
-    <div class="post-bor p-3 mt-2 d-flex flex-column">
+    <div class="post-bor border-0 shadow p-3 mt-2 d-flex flex-column">
         <h1 class="fs-4 text-center">{{post.title}}</h1>
 
         {% if request.user == post.user %}
@@ -80,7 +80,7 @@
 
     <div id="reply" class="hide mt-3">
         <form method="POST" action="{% url 'create_reply' post.did %}"
-            class="post-bor d-flex flex-column mb-2 p-3" enctype="multipart/form-data">
+            class="post-bor border-0 shadow -flex flex-column mb-2 p-3" enctype="multipart/form-data">
             <h1 class="d-block text-center title">Reply to Discussion</h1>
             {% csrf_token %}
             {{ form|crispy }}
