@@ -2,19 +2,23 @@
 
 
 ## Table of Contents
-* [Introduction](#Introduction)
-* [Features](#Features)
-* [Wireframes](#Wireframes)
-* [Database Design](#Database-Design)
-* [Technologies](#Technologies)
-* [Testing](#Testing)
-* [Deployment](#Deployment)
-    * [Project Creation](#Project-Creation)
-    * [Heroku Deployment](#Deployment-To-Heroku)
-    * [Run Locally](#Run-Locally)
-    * [Fork Project](#Fork-Project)
-* [Credits](#Credits)
-  * [Acknowledgements](#Acknowledgements)
+- [DBAA](#dbaa)
+  - [Table of Contents](#table-of-contents)
+  - [Introduction](#introduction)
+  - [Features](#features)
+  - [Wireframes](#wireframes)
+  - [Database Design](#database-design)
+  - [Technologies](#technologies)
+  - [Testing](#testing)
+  - [Known Bugs](#known-bugs)
+    - [Test Results](#test-results)
+  - [Deployment](#deployment)
+    - [Project Creation](#project-creation)
+    - [Deployment to Heroku](#deployment-to-heroku)
+    - [Run Locally](#run-locally)
+    - [Fork Project](#fork-project)
+  - [Credits](#credits)
+    - [Acknowledgements](#acknowledgements)
 
 
 ## Introduction
@@ -102,6 +106,7 @@ Features when viewing own profile:
 - Events Button - This displays a list of all events you marked as going to in the second card
 - Personal Details - Displays your personal details in the second card
 - Edit Details Button - Edit details form will be displayed in the second card to allow users to update their details
+- Change Password Button - Change password form will be displayed in the second card to allow users to change their password
 
 Features when viewing another users profile:
 
@@ -112,6 +117,20 @@ Features when viewing another users profile:
 
 
 ## Wireframes
+
+**User Profile Page**
+
+Logged in user profile page will show their list of friends
+
+![Logged in user profile page](docs/readme_images/user-profile.png)
+
+When current user clicks on the buttons on the left, each card on the right is replaced by the cards below. Edit avatar, edit profile and change password buttons will display the form card.
+
+![Profile page reusable cards](docs/readme_images/user-profile-cards.png)
+
+Finally, Other user profiles will show the event cards and friends card only
+
+![Other users profile page](docs/readme_images/other-user-profile.png)
 
 ## Database Design
 
