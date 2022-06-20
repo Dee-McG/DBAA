@@ -1,6 +1,6 @@
 {% load static %}
 
-<div class="card m-3 border-0 align-items-center">
+<div class="card m-3 align-items-center">
     {% if user_profile.avatar.url is not none %}
     <img src="{{ user_profile.avatar.url }}" class="card-img-top mx-auto main-avatar-image" alt="user avatar image">
     {% else %}
