@@ -14,6 +14,8 @@
   - [Testing](#testing)
   - [Known Bugs](#known-bugs)
     - [Test Results](#test-results)
+    - [Profile tests - Pass](#profile-tests---pass)
+    - [Events test Pass](#events-test-pass)
   - [Deployment](#deployment)
     - [Project Creation](#project-creation)
     - [Deployment to Heroku](#deployment-to-heroku)
@@ -164,15 +166,55 @@ Finally, Other user profiles will show the event cards and friends card only
 
 ## Known Bugs
 
-Validation fails on pages that CK editor is used for the rich text formatting, it is coming from the rendered html code within which we have no control over.
+- Validation fails on pages that CK editor is used for the rich text formatting, it is coming from the rendered html code within which we have 
+  no control over.
 
-Avatar does not load on the users profile while looking at the allauth change password card on that page.
+- Avatar does not load on the users profile while looking at the allauth change password card on that page.
 
 ### Test Results
+
+### Profile tests - Pass
+
+![profile tests](docs/readme_images/profile-tests.png)
+
+### Events test Pass
+
+```python
+    username = 'user'
+    password = 'tesTpasSS'
+    user=self.user,
+    title='Hello',
+    body='Test event',
+    e_time='10/2/2050 10:00',
+    location='random place',
+    fee=20.00
+```
+
+Test steps
+
+- Login as user
+- navigate to /events/events/ page
+- click Create event
+- Input variables above into corresponding fields
+- Click Post
+
+Result - Pass
+
+Comment
+
+- Login as user
+- navigate to /events/events/ page
+- click any event
+- click comment
+- enter comment
+- click Submit
+
+Result - Pass
 
 ## Deployment
 
 ### Project Creation
+
 To create this project I used the `git init` command in the terminal from VS Code.
 
 I then used the `git add .` command followed by `git commit -m "Initial commit"` and was then prompted to create a new repository 
