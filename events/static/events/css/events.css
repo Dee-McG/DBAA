@@ -29,14 +29,14 @@ main {
     background-color: white;
 }
 
-.post-bor:last-of-type {
-    border-bottom: .5px solid #bf9b9b;
-    border-radius: 2px;
-  }
-
 .post-container {
     border-radius: 5px;
     height: 100%;
+}
+
+.user {
+    text-decoration: none;
+    color: black;
 }
 
 .thumb-img {

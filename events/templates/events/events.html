@@ -53,7 +53,7 @@
                 <span class="d-block">Cost: {{event.fee}}</span>
                 <div>
                     <span class="sub-title">
-                        Created by <a href="{% url 'profile' event.user.id %}" class="user">{{event.user}}</a> on {{event.date}}
+                        Created by <a href="{% url 'profile' event.user.id %}" class="user"><strong>{{event.user}}</strong></a> on {{event.date}}
                     </span>
                 </div>
             </div>
