@@ -1,6 +1,6 @@
 # DBAA
 
-![mockup](docs/readme_images/mockup.JPG)
+![mockup](docs/readme_images/mockup.png)
 
 
 ## Table of Contents
@@ -14,6 +14,8 @@
   - [Testing](#testing)
   - [Known Bugs](#known-bugs)
     - [Test Results](#test-results)
+    - [Profile tests - Pass](#profile-tests---pass)
+    - [Events test Pass](#events-test-pass)
   - [Deployment](#deployment)
     - [Project Creation](#project-creation)
     - [Deployment to Heroku](#deployment-to-heroku)
@@ -33,7 +35,6 @@ This project was created for the Code Institute Pride hackathon. It is a social 
 
 **Home Page**
 
-The home page contains: 
 - Hero Image
 - An introduction to the website for users to understand what the website is about. 
 - A featured event - This will show the most popular event
@@ -118,6 +119,14 @@ Features when viewing another users profile:
 - Friends Button - Displays all users the user is following on the second card
 
 
+**Error pages**
+
+- Error 403 - Forbidden request. Eg. user attempts to edit another user's personal details
+
+- Error 404 - When user attempt to view a page that does not exist
+
+- Error 500 - When user encounter's a server error
+
 ## Wireframes
 
 **Home Page**
@@ -161,15 +170,55 @@ Finally, Other user profiles will show the event cards and friends card only
 
 ## Known Bugs
 
-Validation fails on pages that CK editor is used for the rich text formatting, it is coming from the rendered html code within which we have no control over.
+- Validation fails on pages that CK editor is used for the rich text formatting, it is coming from the rendered html code within which we have 
+  no control over.
 
-Avatar does not load on the users profile while looking at the allauth change password card on that page.
+- Avatar does not load on the users profile while looking at the allauth change password card on that page.
 
 ### Test Results
+
+### Profile tests - Pass
+
+![profile tests](docs/readme_images/profile-tests.png)
+
+### Events test Pass
+
+```python
+    username = 'user'
+    password = 'tesTpasSS'
+    user=self.user,
+    title='Hello',
+    body='Test event',
+    e_time='10/2/2050 10:00',
+    location='random place',
+    fee=20.00
+```
+
+Test steps
+
+- Login as user
+- navigate to /events/events/ page
+- click Create event
+- Input variables above into corresponding fields
+- Click Post
+
+Result - Pass
+
+Comment
+
+- Login as user
+- navigate to /events/events/ page
+- click any event
+- click comment
+- enter comment
+- click Submit
+
+Result - Pass
 
 ## Deployment
 
 ### Project Creation
+
 To create this project I used the `git init` command in the terminal from VS Code.
 
 I then used the `git add .` command followed by `git commit -m "Initial commit"` and was then prompted to create a new repository 
