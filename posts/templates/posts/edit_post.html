@@ -11,7 +11,7 @@
     <a href="{% url 'posts' %}" class="back-link"><i class="fa-solid fa-angle-left arrow"></i>Back</a>
 </div>
 
-<div class="container d-flex justify-content-center flex-column mb-3">
+<div class="container d-flex justify-content-center flex-column mb-3 mt-3">
     <!-- FORM -->
     <form method="POST" action="{% url 'edit_post' post.did %}" class="form post-con w-100 mb-2" enctype="multipart/form-data">
         <h1 class="d-block text-center title">Edit A Discussion</h1>
@@ -19,7 +19,7 @@
         {{ form|crispy }}
         {{ form.media }}
         <div class="d-flex justify-content-center">
-            <button type="submit" class="btn btn-dark">Post</button>
+            <button type="submit" class="create-btn">Edit</button>
         </div>
     </form>
     <!-- POST -->

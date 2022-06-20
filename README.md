@@ -1,11 +1,11 @@
-# IKONIC EVENTS
+# DBAA
 
 
 ## Table of Contents
 * [Introduction](#Introduction)
+* [Features](#Features)
 * [Wireframes](#Wireframes)
 * [Database Design](#Database-Design)
-* [Features](#Features)
 * [Technologies](#Technologies)
 * [Testing](#Testing)
 * [Deployment](#Deployment)
@@ -22,10 +22,6 @@
 Welcome to DBAA
 
 This project was created for the Code Institute Pride hackathon. It is a social networking and events platform for LGBTQ+ users to advertise events and connect with other users.
-
-## Wireframes
-
-## Database Design
 
 ## Features
 
@@ -93,6 +89,35 @@ This will allow the author to have full control over the post and commenters con
 
 There will also be a reply button that hides and shows the comment form to allow users to comment on the post.
 
+**User Profile Page**
+
+The user profile page is displayed differently for users viewing their own profile and viewing a profile of another user.
+
+Features when viewing own profile:
+
+- Avatar
+- Edit Avatar button that loads the edit avatar form in the second card to allow users to update their avatar
+- Username
+- Friends Button - This displays a list of all users you are following in the second card
+- Events Button - This displays a list of all events you marked as going to in the second card
+- Personal Details - Displays your personal details in the second card
+- Edit Details Button - Edit details form will be displayed in the second card to allow users to update their details
+
+Features when viewing another users profile:
+
+- Avatar
+- Follow Button that can be used to follow or unfollow users
+- Events Button - Displays a list of events the user has marked going to in the second card
+- Friends Button - Displays all users the user is following on the second card
+
+
+## Wireframes
+
+## Database Design
+
+![ER Diagram](docs/readme_images/er_diagram.JPG)
+
+
 ## Technologies
 * [HTML](https://en.wikipedia.org/wiki/HTML)
 	* This project uses HTML as the main language used to complete the structure of the Website.
@@ -108,6 +133,12 @@ There will also be a reply button that hides and shows the comment form to allow
     * Cloudinary storage was used to user uploaded images
 
 ## Testing
+
+## Known Bugs
+
+Validation fails on pages that CK editor is used for the rich text formatting, it is coming from the rendered html code within which we have no control over.
+
+Avatar does not load on the users profile while looking at the allauth change password card on that page.
 
 ### Test Results
 

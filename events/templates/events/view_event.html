@@ -11,9 +11,9 @@
     <a href="{% url 'events' %}" class="back-link"><i class="fa-solid fa-angle-left arrow"></i>Back</a>
 </div>
 
-<div class="container view-post mb-3">
+<div class="container d-flex justify-content-center flex-column mb-3">
     <!-- Event -->
-    <div class="post-con">
+    <div class="post-bor p-3 mt-2 d-flex flex-column">
         <h1 class="fs-4 text-center">{{event.title}}</h1>
 
         {% if request.user == event.user %}
@@ -42,24 +42,24 @@
             <p>{{event.body|safe}}</p>
         </div>
         {% endif %}
-            <span class="text-center d-block"><strong>Cost: {{event.fee}} $</strong></span>
-
+        <span class="text-center d-block"><strong>Cost: {{event.fee}} $</strong></span>
+        <div class="d-flex flex-row align-items-center justify-content-between">
+            {% if user.is_authenticated %}
+            <form method="POST">
+                {% csrf_token %}
+                {% if going_event %}
+                <button type="submit" name="q" value="{{event.pk}}" class="create-btn"><i class="fa-solid fa-thumbs-down"></i></button>
+                {% else %}
+                <strong></strong>
+                <button type="submit" name="q" value="{{event.id}}" class="create-btn"><i class="fa-regular fa-thumbs-up"></i></button>
+                {% endif %}
+            </form>
+            <strong class="text-secondary">{{ number }} Going{{ number|pluralize }}</strong>
+            {% else %}
+            <a class="btn btn-outline-info" href="{% url 'account_login' %}">Log in to use the going to the event button!</a><br>
+            {% endif %}
+        </div>
     </div>
-    <hr>
-    {% if user.is_authenticated %}
-    <form method="POST">
-        {% csrf_token %}
-        {% if going_event %}
-        <button type="submit" name="q" value="{{event.pk}}" class="btn btn-info"><i class="fa-solid fa-thumbs-down"></i></button>
-        {% else %}
-        <strong></strong>
-        <button type="submit" name="q" value="{{event.id}}" class="btn btn-info"><i class="fa-regular fa-thumbs-up"></i></button>
-        {% endif %}
-    </form>
-    <strong class="text-secondary">{{ number }} Going{{ number|pluralize }}</strong>
-    {% else %}
-    <a class="btn btn-outline-info" href="{% url 'account_login' %}">Log in to use the going to the event button!</a><br>
-    {% endif %}
 
     <div class="d-block">
     {% for comment in comments %}
@@ -72,14 +72,17 @@
     </div>
 
     <div class="d-block">
-        <a class="btn btn-dark" onclick="toggleForm()">Comment</a>
+        <a class="btn btn-dark mt-2" onclick="toggleForm()">Comment</a>
 
         <form method="POST" action="{% url 'comment_event' event.id %}" id="comment" class="post-con mb-2 hide" enctype="multipart/form-data">
-            <h1 class="d-block text-center title">Comment on {{event.title}}</h1>
+            <div class="text-center"><strong>Commenting on:</strong></div>
+            <p class="d-block text-center fs-4 title">Comment on {{event.title}}</p>
             {% csrf_token %}
             {{ form|crispy }}
             {{ form.media }}
-            <button type="submit" class="btn-dark">Submit</button>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="create-btn">Submit</button>
+            </div>
         </form>
     </div>
 </div>
