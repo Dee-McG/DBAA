@@ -336,17 +336,18 @@ footer {
         width: 100%;
         font-family: 'Quicksand', sans-serif;
         background-color: white;
+        z-index: 10000;
     }
 
     .mobile-nav-links {
-        position: fixed;
-        margin-top: 59px;
         background: linear-gradient(120deg, rgb(255, 165, 44) 60%, rgb(255, 255, 65) 60%);
         width: 100%;
         height: 170px;
         overflow: hidden;
         list-style: none;
         display: none;
+        position: absolute;
+        top: 62.5px;
     }
 
     .mobile-nav-link {
