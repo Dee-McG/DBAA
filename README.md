@@ -33,7 +33,6 @@ This project was created for the Code Institute Pride hackathon. It is a social 
 
 **Home Page**
 
-The home page contains: 
 - Hero Image
 - An introduction to the website for users to understand what the website is about. 
 - A featured event - This will show the most popular event
@@ -117,6 +116,14 @@ Features when viewing another users profile:
 - Events Button - Displays a list of events the user has marked going to in the second card
 - Friends Button - Displays all users the user is following on the second card
 
+
+**Error pages**
+
+- Error 403 - Forbidden request. Eg. user attempts to edit another user's personal details
+
+- Error 404 - When user attempt to view a page that does not exist
+
+- Error 500 - When user encounter's a server error
 
 ## Wireframes
 
