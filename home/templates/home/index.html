@@ -56,7 +56,7 @@
             <p class="featured-event-price"><i class="fa-solid fa-money-bill" id="featured-fa-money"></i> £{{feature.fee}}</p>
             <p>{{feature.body|safe}}</p>
             <div class="featured-event-details-button-div">
-                <a href="{% url 'view_event' feature.id %}"><button class="featured-events-more-details-button">More Details</button></a>
+                <a href="{% url 'view_event' feature.id %}"><button class="featured-events-more-details-button border-0 p-2 shadow">More Details</button></a>
             </div>
         </div>
         
@@ -83,7 +83,7 @@
                 <p class="upcoming-event-location"><i class="fa-solid fa-location-dot"></i> {{event.location}}</p>
                 <p class="upcoming-event-price"><i class="fa-solid fa-money-bill"></i> £{{event.fee}}</p>
                 <div class="details-button-div">
-                    <a href="{% url 'view_event' event.id %}"><button class="upcoming-events-more-details-button">More Details</button></a>
+                    <a href="{% url 'view_event' event.id %}"><button class="upcoming-events-more-details-button border-0 p-2 shadow">More Details</button></a>
                 </div>
             </div>
         </div>
