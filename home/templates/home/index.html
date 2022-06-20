@@ -40,6 +40,8 @@
     <div class="featured-event-image">
         {% if feature.image.url is not none %}
         <img src="{{feature.image.url}}" alt="Offical poster for Madonna fan party with a headshot of Madonna with glasses" class="featured-event-img">
+        {% else %}
+        <img src="{% static '/images/default.png' %}" alt="Rainbow heart, default event image" class="default-featured-event-img">
         {% endif %}
     </div>
     
