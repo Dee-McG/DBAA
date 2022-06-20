@@ -20,7 +20,7 @@
         <h5 class="card-title text-center fs-4">{{ user_profile }}</h5>
     </div>
     {% endif %}
-
+    {% url 'account_change_password' as password_url %}
     <div class="card-body w-100">
         {% if user_profile_str == user_str %}
         <div class="d-grid gap-2">
@@ -28,6 +28,7 @@
             <a href="{% url 'view_profile_events' request.user.id %}" class="btn {% if request.path == events_url %} btn-primary {% else %} btn-outline-primary {% endif %}" role="button">Events</a>
             <a href="{% url 'view_details' request.user.id %}" class="btn {% if request.path == details_url %} btn-primary {% else %} btn-outline-primary {% endif %}" role="button">Personal details</a>
             <a href="{% url 'edit_details' request.user.id %}" class="btn {% if request.path == edit_details_url %} btn-primary {% else %} btn-outline-primary {% endif %}" role="button">Edit Details</a>
+            <a href="{% url 'account_change_password' %}" class="btn {% if request.path == password_url %} btn-primary {% else %} btn-outline-primary {% endif %}" role="button">Change Password</a>
         </div>
         {% else %}
         <div class="d-grid gap-2">
