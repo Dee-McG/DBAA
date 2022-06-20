@@ -1,6 +1,6 @@
 # DBAA
 
-![mockup](docs/readme_images/mockup.JPG)
+![mockup](docs/readme_images/mockup.png)
 
 
 ## Table of Contents
