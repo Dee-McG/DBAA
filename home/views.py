@@ -20,7 +20,7 @@ class IndexView(ListView):
         for event in events:
             featured = Event.objects.filter(id=event['event'])
         
-        next_events = Event.objects.filter(e_time__gt=date.today())[:6]
+        next_events = Event.objects.filter(e_time__gt=date.today()).order_by('e_time')[:6]
 
         context = {
             "featured": featured,
