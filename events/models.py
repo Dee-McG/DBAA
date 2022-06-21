@@ -14,7 +14,7 @@ class Event(models.Model):
     date = models.DateTimeField(auto_now=True)
     going = models.ManyToManyField(User, related_name="going_event", blank=True)
     location = models.CharField(max_length=160, blank=False, default="Not Provided")
-    fee = models.DecimalField(default=0, help_text="$", decimal_places=2, max_digits=5)
+    fee = models.CharField(max_length=10, null=True, blank=True)
 
     class Meta:
         ordering = ["-date"]

@@ -50,7 +50,7 @@
                     <a href="{% url 'view_event' event.id %}" class="title-anchor">{{event.title}}</a>
                 </div>
                 <span class="d-block">Location: {{event.location}}</span>
-                <span class="d-block">Cost: {{event.fee}}</span>
+                <span class="d-block">Cost: £{{event.fee}}</span>
                 <div>
                     <span class="sub-title">
                         Created by <a href="{% url 'profile' event.user.id %}" class="user"><strong>{{event.user}}</strong></a> on {{event.date}}

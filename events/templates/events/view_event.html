@@ -42,7 +42,7 @@
             <p>{{event.body|safe}}</p>
         </div>
         {% endif %}
-        <span class="text-center d-block"><strong>Cost: {{event.fee}} $</strong></span>
+        <span class="text-center d-block"><strong>Cost: £{{event.fee}}</strong></span>
         <div class="d-flex flex-row align-items-center justify-content-between">
             {% if user.is_authenticated %}
             <form method="POST">
