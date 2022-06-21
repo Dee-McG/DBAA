@@ -37,7 +37,7 @@
         <h2 class="featured-event-title">Featured Event</h2>
     </div>
     {% for feature in featured %}
-    <div class="featured-event-image">
+    <div class="featured-event-image d-flex justify-content-center">
         {% if feature.image.url is not none %}
         <img src="{{feature.image.url}}" alt="Offical poster for Madonna fan party with a headshot of Madonna with glasses" class="featured-event-img">
         {% else %}
@@ -75,6 +75,8 @@
         <div class="upcoming-events-listing">
             {% if event.image.url is not none %}
             <div class="upcoming-event-image-div"><img src="{{event.image.url}}" alt="Event image" class="upcoming-event-image"></div>
+            {% else %}
+            <div class="upcoming-event-image-div"><img src="{% static '/images/default.png' %}" alt="Rainbow heart, default event image" class="default-event-img"></div>
             {% endif %}
             <h3 class="upcoming-events-listing-title">{{event.title}}</h3>
             <div class="upcoming-event-details-div">
