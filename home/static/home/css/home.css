@@ -153,6 +153,14 @@
     color: white;
 }
 
+.default-featured-event-img {
+    width: 50%;
+}
+
+.default-event-img {
+    height: 200px;
+}
+
 /* Upcoming Events */
 
 .upcoming-events {

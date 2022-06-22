@@ -23,8 +23,6 @@ main {
 .post-bor {
     border: 1px solid #bf9b9b;
     border-radius: 8px;
-    display: flex;
-    flex-direction: row;
     overflow: hidden;
     background-color: white;
 }
@@ -57,8 +55,8 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
-    width: 80%;
+    height: 100px;
+    width: 100px;
 }
 
 .view-post {
@@ -82,7 +80,20 @@ main {
     display: none;
 }
 
-@media only screen and (min-width: 500px) {
+div[id^="ev"] {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+div[id^="ev-btn"] {
+    display: none;
+    padding: 5px;
+    width: 80%;
+}
+
+@media only screen and (min-width: 600px) {
     .thumb-img > img{
         display: flex;
         width: 100px;
@@ -98,6 +109,15 @@ main {
         display: flex;
         height: 100px;
         width: 100px;
+    }
+
+    div[id^="ev"] {
+        flex-direction: row;
+    }
+
+    div[id^="ev-btn"] {
+        display: flex;
+        padding: 0.8em 2.5em;
     }
 }
 
