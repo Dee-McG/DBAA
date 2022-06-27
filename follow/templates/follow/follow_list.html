@@ -19,7 +19,7 @@
         </div>
     </div>
 
-    <div class="mt-4">
+    <div class="mt-4 mb-5 p-4 bg-white shadow">
         <div class="d-flex flex-row justify-content-between">
             <div>
                 <a href="{% url 'follow' %}">Following Posts</a>
@@ -30,7 +30,7 @@
         </div>
 
         {% for post in posts %}
-        <div class="post-bor mt-2">
+        <div class="post-bor border-0 shadow my-3">
             <div class="thumb-img">
             {% if post.image.url is not none %}
                 <img class="thumbnail" src="{{post.image.url}}">
@@ -40,7 +40,7 @@
             </div>
             {% endif %}
             </div>
-            <div class="flex-column card-text">
+            <div class="d-flex flex-column justify-content-center card-text w-100">
                 <div>
                     <a href="{% url 'view_post' post.did %}" class="title-anchor">{{post.title}}</a>
                 </div>
@@ -49,6 +49,9 @@
                         <strong>{{post.user}}</strong>
                     </a> on {{post.time}}</span>
                 </div>
+            </div>
+            <div class="align-items-center justify-content-end w-25 me-3 btn-hide">
+                <a class="create-btn" href="{% url 'view_post' post.did %}">View Post</a>
             </div>
         </div>
         {% endfor %}
